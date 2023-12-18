@@ -30,5 +30,41 @@ export default function Signup() {
                 </div >
             </nav >
         </header>
+        <p></p>
+        <div className="login-container">
+      <h1>Registrarse</h1>
+      <form className="login-form">
+        <label htmlFor="name">Nombre</label>
+        <input type="text" id="name" name="name" />
+
+        <label htmlFor="apellido">Apellido</label>
+        <input type="text" id="apellido" name="apellido" />
+
+        <label htmlFor="UserName">UserName</label>
+        <input type="text" id="UserName" name="UserName" />
+
+        <label htmlFor="pais">Pais</label>
+        <input type="text" id="pais" name="pais" />
+
+        <label htmlFor="email">Correo Electronico</label>
+        <input type="text" id="email" name="email" />
+
+        <label htmlFor="cedula">Cédula</label>
+        <input type="text" id="cedula" name="cedula" />
+
+        <label htmlFor="password">Contraseña</label>
+        <input type="password" id="password" name="password" />
+
+        
+        <label htmlFor="password">Confirmar contraseña</label>
+        <input type="password" id="password" name="password" />
+
+        <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" />
+        
+
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
     </>;
 }

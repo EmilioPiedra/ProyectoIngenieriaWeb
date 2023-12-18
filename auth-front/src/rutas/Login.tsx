@@ -40,7 +40,7 @@ export default function Login() {
         <label htmlFor="password">Contraseña</label>
         <input type="password" id="password" name="password" />
 
-        <button type="submit">Login</button>
+        <button type="submit">Iniciar Sessión</button>
       </form>
     </div>
     </>);
