@@ -4,23 +4,19 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-// Define a custom type for the context value
-interface AuthContextValue {
-  isAuthenticated: boolean;
-}
 
-// Create the context with the custom type
-const AuthContext = createContext<AuthContextValue>({
+const AuthContext = createContext({
   isAuthenticated: false,
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
-  // Use the custom type for the context value
   return (
     <AuthContext.Provider value={{ isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => useContext(AuthContext);

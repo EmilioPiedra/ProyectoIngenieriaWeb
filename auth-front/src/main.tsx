@@ -6,8 +6,9 @@ import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-d
 import Home from './rutas/Home';
 import Login from './rutas/Login';
 import Signup from './rutas/Signup';
-import RutaProtejida from './rutas/RutaProtejita';
+import RutaProtegida from './rutas/RutaProtegita';
 import Dashboard from './rutas/Dashboard';
+import { AuthProvider } from './auth/AuthProvider';
 
 
 // Definir las rutas utilizando Remix
@@ -26,22 +27,23 @@ const routes: RouteObject[] = [
   },
   {
     path: '/',
-    element: <RutaProtejida />,
+    element: <RutaProtegida />,  // Corregido el nombre del componente
     children: [
       {
         path: "/dashboard",
-        element: <Dashboard/>,
+        element: <Dashboard />,
       }
     ]
   },
 ];
 
 
-// Crear el enrutador usando createBrowserRouter
 const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 );
