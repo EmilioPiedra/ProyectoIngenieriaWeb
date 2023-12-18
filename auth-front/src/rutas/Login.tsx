@@ -5,7 +5,7 @@ export default function Login() {
 
     return (<>
         <header>
-            <nav className="navbar navbar-dark bg-primary custom-navbar">
+            <nav className="navbar bg-primary custom-navbar">
                 <div className="container-fluid" >
                     <div className="navbar-brand d-flex align-items-center">
                         <img
