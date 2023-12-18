@@ -5,7 +5,7 @@ import logoImage from "../imagenes/rueda-dentada.png";
 export default function Dashboard() {
     return <>
         <header>
-            <nav className="navbar navbar-dark bg-primary custom-navbar">
+            <nav className="navbar navbar-dark bg-be0f30 custom-navbar">
                 <div className="container-fluid" >
                     <div className="navbar-brand d-flex align-items-center">
                         <img

@@ -5,7 +5,7 @@ export default function Login() {
 
     return (<>
         <header>
-            <nav className="navbar bg-primary custom-navbar">
+            <nav className="navbar navbar-dark bg-be0f30 custom-navbar">
                 <div className="container-fluid" >
                     <div className="navbar-brand d-flex align-items-center">
                         <img
@@ -30,11 +30,18 @@ export default function Login() {
                 </div >
             </nav >
         </header>
-        <h1>Login</h1>
-        <label>Username</label>
-        <input type="text" />
-        <label>Password</label>
-        <input type="password" />
-        <button>Login</button>
+     <p></p>
+        <div className="login-container">
+      <h1>Iniciar Sessión</h1>
+      <form className="login-form">
+        <label htmlFor="username">Correo</label>
+        <input type="text" id="username" name="username" />
+
+        <label htmlFor="password">Contraseña</label>
+        <input type="password" id="password" name="password" />
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
     </>);
 }
