@@ -1,47 +1,34 @@
-import { Icon } from '@iconify/react';
-import { Link } from "react-router-dom";
-import logoImage from "../imagenes/rueda-dentada.png";
+import { useState } from "react";
+import DefaultLayout from "../layout/DefaultLayout";
+import { useAuth } from "../auth/AuthProvider";
+import { Navigate } from "react-router-dom";
+
 export default function Login() {
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
+    const auth = useAuth();
 
-    return (<>
-        <header>
-            <nav className="navbar navbar-dark bg-be0f30 custom-navbar">
-                <div className="container-fluid" >
-                    <div className="navbar-brand d-flex align-items-center">
-                        <img
-                            src={logoImage}
-                            alt="Logo"
-                            style={{ width: "50px", height: "50px", marginRight: "15px" }}
-                        />
-                        <Link to="/" className="nav-link">
-                            <h1 style={{ display: "inline", color: "black" }}>BikeRental</h1>
-                        </Link>
-                    </div>
-                    <div className="d-flex align-items-center">
-                        <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white' }} />
-                        <Link to="/login" className="nav-link mx-3" style={{ color: 'white' }}>
-                            <h2>Iniciar Sesión</h2>
-                        </Link>
+    if (auth.isAuthenticated) {
+        return <Navigate to="/dashboard" />
+    }
 
-                        <Link to="/signup" className="nav-link" style={{ color: 'white' }}>
-                            <h2>Registrarse</h2>
-                        </Link>
-                    </div>
-                </div >
-            </nav >
-        </header>
-     <p></p>
-        <div className="login-container">
-      <h1>Iniciar Sessión</h1>
-      <form className="login-form">
-        <label htmlFor="username">Correo</label>
-        <input type="text" id="username" name="username" />
+    return (
+        <>
+            <DefaultLayout>
+                <p></p>
+                <div className="login-container">
+                    <h1>Iniciar Sesión</h1>
+                    <form className="login-form">
+                        <label htmlFor="username">Correo</label>
+                        <input type="text" id="username" name="username" value={userName} onChange={(e) => setUserName(e.target.value)} />
 
-        <label htmlFor="password">Contraseña</label>
-        <input type="password" id="password" name="password" />
+                        <label htmlFor="password">Contraseña</label>
+                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-        <button type="submit">Iniciar Sessión</button>
-      </form>
-    </div>
-    </>);
+                        <button type="submit">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </DefaultLayout>
+        </>
+    );
 }
