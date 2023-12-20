@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import DefaultLayout from '../layout/DefaultLayout';
 import { useAuth } from "../auth/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { ErrorResponse, Navigate, useNavigate } from "react-router-dom";
+import { API_URL } from '../auth/constants';
+import { AuthResponseError } from '../types/types';
 
 
 export default function Signup() {
@@ -14,7 +16,49 @@ export default function Signup() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [fechaNacimiento, setFechaNacimiento] = useState("");
+    const [errorResponse, setErrorResponse] = useState("");
+
     const auth = useAuth();
+    const goTo = useNavigate();
+
+    async function handleSubnit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`${API_URL}/signup`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    apellido,
+                    userName,
+                    pais,
+                    email,
+                    cedula,
+                    password,
+                    confirmPassword,
+                    fechaNacimiento,
+                })
+            });
+
+            if (response.ok) {
+                console.log("usuario creado correctamente");
+                setErrorResponse("");
+
+                goTo("/login")
+            } else {
+                console.log("Someting wrong");
+                const json = await response.json() as AuthResponseError;
+                setErrorResponse(json.body.error);
+                return;
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     if (auth.isAuthenticated) {
         return <Navigate to="/dashboard" />
@@ -24,7 +68,8 @@ export default function Signup() {
             <p></p>
             <div className="login-container">
                 <h1>Registrarse</h1>
-                <form className="login-form">
+                {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                <form className="login-form" onSubmit={handleSubnit}>
                     <label htmlFor="name">Nombre</label>
                     <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
 
