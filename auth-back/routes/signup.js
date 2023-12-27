@@ -1,6 +1,7 @@
 const express = require('express');
 const { jsonResponse } = require('../lib/jsonResponse');
 const router = express.Router();
+const user = require("../schema/user")
 
 router.post('/', (req, res) => {
     const { name, apellido, userName, pais, email, cedula, password, confirmPassword, fechaNacimiento } = req.body;
@@ -9,9 +10,12 @@ router.post('/', (req, res) => {
     }
 
     //crear usuario en la base de datos
+    const User = new user({ name, apellido, userName, pais, email, cedula, password, fechaNacimiento });
+    User.save();
+
+
     res.status(200).json(jsonResponse(200, { message: "Usuario creado correctamente" }));
 
-    res.send('Signup route');
 });
 
 module.exports = router;
