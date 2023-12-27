@@ -1,5 +1,8 @@
 const Mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
+const { generateAccessToken, generateRefreshToken } = require("../auth/generateTokens");
+const getUserInfo = require("../lib/getUserInfo");
+const Token = require("../schema/token");
 
 const userSchema = new Mongoose.Schema({
     id: { type: Object },
@@ -26,5 +29,37 @@ userSchema.pre('save', function (next) {
         })
     }
 });
+
+userSchema.methods.usernameExists = async function (userName) {
+    const result = await Mongoose.model("user").find({ userName: userName });
+    return result.length > 0;
+};
+
+userSchema.methods.comparePassword = async function (password, hash) {
+    console.log(password, hash);
+    const same = await bcrypt.compare(password, hash);
+
+    return same;
+};
+
+userSchema.methods.createAccessToken = function () {
+    return generateAccessToken(getUserInfo(this));
+};
+
+userSchema.methods.createRefreshToken = async function (next) {
+    const refreshToken = generateRefreshToken(getUserInfo(this));
+
+    console.error("refreshToken", refreshToken);
+
+    try {
+        await new Token({ token: refreshToken }).save();
+        console.log("Token saved", refreshToken);
+        return refreshToken;
+    } catch (error) {
+        console.error(error);
+        //next(new Error("Error creating token"));
+    }
+};
+
 
 module.exports = Mongoose.model("user", userSchema);

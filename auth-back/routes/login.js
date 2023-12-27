@@ -1,21 +1,45 @@
 const express = require('express');
 const { jsonResponse } = require('../lib/jsonResponse');
 const router = express.Router();
+const user = require("../schema/user")
+const getUserInfo = require("../lib/getUserInfo");
 
-router.post('/', (req, res) => {
+
+router.post('/', async (req, res) => {
     const { userName, password } = req.body;
     if (!!!userName || !!!password) {
         return res.status(400).json(jsonResponse(400, { error: "Campos requeridos faltantes" }));
     }
 
-    //autenticar usuario
-    const accessToken = "access_token"
-    const refreshToken = "refresh_token"
-    const user = {
-        id: '1',
-        name: 'juan',
-        userName: 'xxx',
+    const User = await user.findOne({ userName });
+    if (User) {
+        const correctPassword = await User.comparePassword(password, User.password);
+
+        if (correctPassword) {
+            const accessToken = User.createAccessToken();
+            const refreshToken = await User.createRefreshToken();
+
+            console.log({ accessToken, refreshToken });
+            return res.json(
+                jsonResponse(200, {
+                    accessToken,
+                    refreshToken,
+                    user: getUserInfo(user),
+                })
+            );
+        } else {
+            return res.status(400).json(
+                jsonResponse(400, {
+                    error: "password incorrect",
+                }));
+        }
+    } else {
+        return res.status(400).json(
+            jsonResponse(400, {
+                error: "username and/or password incorrect",
+            }));
     }
+
 
     res.status(200).json(jsonResponse(200, { user, accessToken, refreshToken }));
 
