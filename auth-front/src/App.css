@@ -41,3 +41,19 @@
   color: #888;
 }
 
+
+/* App.css */
+.fondo-negro {
+  background-color: black;
+  color: white; /* Color del texto blanco */
+  height: 100vh;
+  display: flex;
+ 
+  flex-direction: left;
+}
+
+.alquiler-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  /* Agrega más estilos según sea necesario */
+}
