@@ -1,40 +1,154 @@
 .bg-be0f30 {
-    background-color: #BE0F30 !important;
-  }
-.login-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-top: 10px;
-  }
-  
-  input {
-    padding: 8px;
-    margin-bottom: 15px;
-  }
-  
-  button {
-    background-color: #BE0F30;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #8c0a25; /* Cambia el color al pasar el ratón sobre el botón */
-  }
-  
+  background-color: #BE0F30 !important;
+}
 
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+button {
+  background-color: #BE0F30;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8c0a25;
+  /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+/*layout*/
+.name {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.login {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.signup {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.fondo-negro {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.titulo {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.portada {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  object-position: 50% 90%;
+  /* Puedes ajustar estos valores según sea necesario */
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+
+.introduccion {
+  font-size: 35px;
+  margin-top: 20px;
+  font-weight: bold;
+  /* Añade esta línea para aplicar negrita */
+
+}
+
+.destacado {
+  color: #C5A76A;
+  /* Reemplaza 'TuColorDeseado' con el color que desees */
+  font-weight: bold;
+}
+
+.texto {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.tabla {
+  width: 90%;
+}
+
+
+.tabla th {
+  border: 1px solid white;
+  padding: 5px;
+  font-weight: normal;
+}
+
+.tabla td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.requisitos {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.requisitos h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.requisitos ul {
+  list-style-type: none;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.requisitos li {
+  margin-bottom: 5px;
+}
+
+
+.imagen-requisitos img {
+  width: 70%;
+  /* Ajusta según sea necesario */
+  border-radius: 5px;
+  /* Agrega borde redondeado */
+}

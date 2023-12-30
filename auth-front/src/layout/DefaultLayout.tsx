@@ -16,20 +16,20 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
                             <img
                                 src={logoImage}
                                 alt="Logo"
-                                style={{ width: "50px", height: "50px", marginRight: "15px" }}
+                                style={{ width: "65px", height: "65px", marginRight: "15px" }}
                             />
                             <Link to="/" className="nav-link">
-                                <h1 style={{ display: "inline", color: "black" }}>BikeRental</h1>
+                                <h1 className='name' style={{ display: "inline", color: "black" }}>BikeRental</h1>
                             </Link>
                         </div>
                         <div className="d-flex align-items-center">
-                            <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white' }} />
+                            <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }} />
                             <Link to="/login" className="nav-link mx-3" style={{ color: 'white' }}>
-                                <h2>Iniciar Sesión</h2>
+                                <h2 className='login'>Iniciar Sesión</h2>
                             </Link>
 
                             <Link to="/signup" className="nav-link" style={{ color: 'white' }}>
-                                <h2>Registrarse</h2>
+                                <h2 className='signup'>Registrarse</h2>
                             </Link>
                         </div>
                     </div >
