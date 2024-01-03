@@ -59,8 +59,6 @@ export default function Home() {
                   <td>Uso diario</td>
                   <td>Horario (08h00 – 19h00) / $25 efectivo / $28 tarjeta *Garantía $30</td>
                 </tr>
-
-                {/* Agrega más filas según sea necesario */}
               </tbody>
             </table>
           </div>

@@ -16,7 +16,7 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
                             <img
                                 src={logoImage}
                                 alt="Logo"
-                                style={{ width: "65px", height: "65px", marginRight: "15px" }}
+                                style={{ width: "40px", height: "40px", marginRight: "15px" }}
                             />
                             <Link to="/" className="nav-link">
                                 <h1 className='name' style={{ display: "inline", color: "black" }}>BikeRental</h1>

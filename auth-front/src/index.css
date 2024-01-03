@@ -45,17 +45,17 @@ button:hover {
 
 /*layout*/
 .name {
-  font-size: 55px;
+  font-size: 35px;
   font-weight: bold;
 }
 
 .login {
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
 }
 
 .signup {
-  font-size: 35px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -71,7 +71,7 @@ button:hover {
 }
 
 .titulo {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 20px;
   font-weight: bold;
 }
@@ -102,7 +102,7 @@ button:hover {
 }
 
 .texto {
-  font-size: 36px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 300;
 }
