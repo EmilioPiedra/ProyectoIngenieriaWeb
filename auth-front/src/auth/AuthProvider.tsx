@@ -13,12 +13,14 @@ const AuthContext = createContext({
   saveUser: (userData: AuthResponse) => { },
   getRefreshToken: () => { },
   getUser: () => ({} as User | undefined),
+  signOut: () => { },
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [accessToken, setAccessToken] = useState<string>("");
   const [user, setUser] = useState<User>();
+  const [isLoading, setIsLoading] = useState(true);
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
@@ -71,8 +73,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
       return null;
     }
   }
+
+
   async function checkAuth() {
     if (accessToken) {
+      const userInfo = await getUserInfo(accessToken);
+      if (userInfo) {
+        saveSessionInfo(userInfo, accessToken, getRefreshToken()!);
+        setIsLoading(false);
+        return;
+      }
     } else {
       const token = getRefreshToken();
       if (token) {
@@ -81,12 +91,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
           const userInfo = await getUserInfo(newAccessToken);
           if (userInfo) {
             saveSessionInfo(userInfo, newAccessToken, token);
+            setIsLoading(false);
+            return;
           }
 
         }
       }
     }
+    setIsLoading(false);
+  }
 
+  function signOut() {
+    setIsAuthenticated(false);
+    setAccessToken("");
+    setUser(undefined);
+    localStorage.removeItem("token");
   }
 
   function saveSessionInfo(userInfo: User, accessToken: string, refreshToken: string) {
@@ -94,6 +113,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     localStorage.setItem("token", JSON.stringify(refreshToken));
     setIsAuthenticated(true);
     setUser(userInfo);
+
   }
 
   function getAccessToken() {
@@ -116,8 +136,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser }}>
-      {children}
+    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut }}>
+      {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );
 }

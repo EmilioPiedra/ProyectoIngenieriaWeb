@@ -150,5 +150,20 @@ button:hover {
   width: 70%;
   /* Ajusta según sea necesario */
   border-radius: 5px;
-  /* Agrega borde redondeado */
+}
+
+/* boton salir*/
+.exit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.exit-button:hover {
+  background-color: #bd2130;
+  /* Cambia el color de fondo al pasar el ratón sobre el botón */
 }

@@ -1,12 +1,12 @@
 import { useAuth } from '../auth/AuthProvider';
-import DefaultLayout from '../layout/DefaultLayout';
+import PortalLayout from '../layout/PortalLayout';
 
 export default function Dashboard() {
     const auth = useAuth();
 
     return (
-        <DefaultLayout>
+        <PortalLayout>
             <h1>Dashboard de {auth.getUser()?.name}</h1>
-        </DefaultLayout>
+        </PortalLayout>
     );
 }
