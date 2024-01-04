@@ -71,31 +71,31 @@ export default function Signup() {
                 {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
                 <form className="login-form" onSubmit={handleSubnit}>
                     <label htmlFor="name">Nombre</label>
-                    <input type="text" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" id="name" required name="name" value={name} onChange={(e) => setName(e.target.value)} />
 
                     <label htmlFor="apellido">Apellido</label>
-                    <input type="text" id="apellido" name="apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+                    <input type="text" id="apellido" required name="apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} />
 
                     <label htmlFor="UserName">UserName</label>
-                    <input type="text" id="UserName" name="UserName" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                    <input type="text" id="UserName" required name="UserName" value={userName} onChange={(e) => setUserName(e.target.value)} />
 
                     <label htmlFor="pais">Pais</label>
-                    <input type="text" id="pais" name="pais" value={pais} onChange={(e) => setPais(e.target.value)} />
+                    <input type="text" id="pais" required name="pais" value={pais} onChange={(e) => setPais(e.target.value)} />
 
                     <label htmlFor="email">Correo Electronico</label>
-                    <input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="text" id="email" required name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
                     <label htmlFor="cedula">Cédula</label>
-                    <input type="text" id="cedula" name="cedula" value={cedula} onChange={(e) => setCedula(e.target.value)} />
+                    <input type="text" id="cedula" maxLength={10} required name="cedula" value={cedula} onChange={(e) => setCedula(e.target.value)} />
 
                     <label htmlFor="password">Contraseña</label>
-                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" required id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                     <label htmlFor="confirmPassword">Confirmar contraseña</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                    <input type="password" id="confirmPassword" required name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
 
                     <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} />
+                    <input type="date" required id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} />
 
                     <button type="submit">Registrar</button>
                 </form>
