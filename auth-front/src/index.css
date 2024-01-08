@@ -167,3 +167,9 @@ button:hover {
   background-color: #bd2130;
   /* Cambia el color de fondo al pasar el ratón sobre el botón */
 }
+
+/* Cambia el color de los íconos de navegación del carousel a rojo */
+.carousel-control-prev-icon::before,
+.carousel-control-next-icon::before {
+  color: rgb(177, 83, 83);
+}

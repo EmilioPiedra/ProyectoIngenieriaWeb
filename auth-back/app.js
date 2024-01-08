@@ -3,7 +3,11 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 const authenticate = require('../auth-back/auth/authenticate');
+const Bicycle = require('./schema/bicycle'); // Ajusta la ruta según tu estructura de carpetas
+const bicyclesData = require('./auth/bicyclesData'); // Importa el arreglo
+
 require('dotenv').config();
+
 
 const port = process.env.PORT || 3100;
 
@@ -13,10 +17,13 @@ app.use(express.json());
 async function main() {
     await mongoose.connect(process.env.DB_CONNECTION_STRING);
     console.log("conectado a mongosse")
+    await Bicycle.insertMany(bicyclesData);
+    console.log("Datos iniciales insertados correctamente");
 }
 
 main().catch(console.error);
-
+const bicyclesRouter = require('./routes/getBikes');
+app.use('/api/bicycles', bicyclesRouter);
 app.use('/api/signup', require('./routes/signup'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/user', authenticate, require('./routes/users'));
