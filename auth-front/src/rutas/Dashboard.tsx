@@ -47,7 +47,7 @@ export default function Dashboard() {
             <h1>Dashboard de {auth.getUser()?.name}</h1>
 
             <div>
-                <h2 className='hola'>Listado de Bicicletas</h2>
+                <h2>Listado de Bicicletas</h2>
                 <Carousel
                     activeIndex={activeIndex}
                     onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
