@@ -79,7 +79,7 @@ export default function Dashboard() {
 
     {/* Botones de navegación manual */}
     <div className="d-flex justify-content-center mt-3">
-      <button className="btn btn-flat btn-danger" style={{ marginRight: '1rem' }} onClick={prevSlide}>
+      <button className="btn btn-flat btn-danger" onClick={prevSlide} style={{ marginRight: '1rem' }}>
         Previous
       </button>
       <button className="btn btn-flat btn-danger" onClick={nextSlide}>
@@ -88,5 +88,6 @@ export default function Dashboard() {
     </div>
   </div>
 </PortalLayout>
+
     );
 }
