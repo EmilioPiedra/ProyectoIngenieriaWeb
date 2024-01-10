@@ -4,7 +4,7 @@ import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from '../auth/constants';
 import { AuthResponse, AuthResponseError } from '../types/types';
-
+import imagenlogonodo from "../imagenes/imagenlogonodo.png"
 export default function Login() {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -69,6 +69,10 @@ export default function Login() {
                     <button type="submit">Iniciar Sesión</button>
                 </form>
             </div>
+            <footer id="footer">
+                <div className="nombrefooter">BikeRental@2023</div>
+            
+             </footer>
         </DefaultLayout>
     );
 }
