@@ -43,49 +43,54 @@ export default function Dashboard() {
     };
 
     return (
-        <PortalLayout>
-            <h1>Dashboard de {auth.getUser()?.name}</h1>
+<PortalLayout>
+  <h1 className="text-3xl font-bold">Dashboard de {auth.getUser()?.name}</h1>
 
-            <div>
-                <h2>Listado de Bicicletas</h2>
-                <Carousel
-                    activeIndex={activeIndex}
-                    onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
-                >
-                    {bicycles.map((bicycle) => (
-                        <Carousel.Item key={bicycle.id}>
-                            <div className="d-flex justify-content-around">
-                                <div className="card" style={{ width: '25rem' }}>
-                                    <div className="d-flex">
-                                        <img
-                                            src={bicycle.image}
-                                            className="card-img-top"
-                                            alt={bicycle.name}
-                                            style={{ objectFit: 'cover', height: '200px', flex: '1' }}
-                                        />
-                                        <div className="card-body" style={{ flex: '1' }}>
-                                            <h5 className="card-title">{bicycle.name}</h5>
-                                            <p className="card-text">{bicycle.description}</p>
-                                            <p className="card-text">${bicycle.price}</p>
-                                            <button className="btn btn-primary">+</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </Carousel.Item>
-                    ))}
-                </Carousel>
-
-                {/* Botones de navegación manual */}
-                <div className="d-flex justify-content-center mt-3">
-                    <button className="btn btn-primary" onClick={prevSlide}>
-                        Previous
-                    </button>
-                    <button className="btn btn-primary ml-2" onClick={nextSlide}>
-                        Next
-                    </button>
+  <div>
+    <h2 className="text-2xl font-bold mb-4">Listado de Bicicletas</h2>
+    <Carousel
+      activeIndex={activeIndex}
+      onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
+      className="carousel-lg"
+    >
+      {bicycles.map((bicycle) => (
+        <Carousel.Item key={bicycle.id}>
+          <div className="d-flex justify-content-around">
+            <div className="card" style={{ width: '35rem' }}>
+              <div className="d-flex">
+                <img
+                  src={bicycle.image}
+                  className="card-img-top"
+                  alt={bicycle.name}
+                  style={{ objectFit: 'cover', height: '300px', flex: '1' }}
+                />
+                <div className="card-body" style={{ flex: '1' }}>
+                  <h5 className="card-title text-xl">{bicycle.name}</h5>
+                  <p className="card-text">{bicycle.description}</p>
+                  <p className="card-text text-xl">${bicycle.price}</p>
+                  <button className="btn btn-flat btn-danger">+</button>
                 </div>
+              </div>
             </div>
-        </PortalLayout>
+          </div>
+        </Carousel.Item>
+      ))}
+    </Carousel>
+
+    {/* Botones de navegación manual */}
+    <div className="d-flex justify-content-center mt-3">
+    <button className="btn btn-danger" onClick={prevSlide} style={{ color: 'white' }}>
+                    Previous
+                </button>
+                <div style={{ width: '60px' }}></div> {/* Aumenté el espacio entre botones */}
+                <button className="btn btn-danger" onClick={nextSlide} style={{ color: 'white' }}>
+                    Next
+                </button>
+            </div>
+            
+  </div>
+</PortalLayout>
+
+
     );
 }
