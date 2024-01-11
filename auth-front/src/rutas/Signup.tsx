@@ -100,6 +100,7 @@ export default function Signup() {
                     <button type="submit">Registrar</button>
                 </form>
             </div>
+            <footer id='footersing'>BikeRental@2023</footer>
         </DefaultLayout>
     </>;
 }

@@ -79,8 +79,14 @@ export default function Home() {
               <img src={imagenrequisito} alt="Imagen de requisitos" />
             </div>
           </div>
+          <div className='col-md-6'>
+            <div className='frase'>
+              <p>¡Descubre los puntos de anclaje para bicicletas en nuestra ciudad amigable con las dos ruedas! Estos anclajes están estratégicamente ubicados para hacer tu viaje en bicicleta aún más conveniente.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </DefaultLayout>
+      <footer id='footerhome'>BikeRental@2023</footer>
+    </DefaultLayout>  
   </>;
 }
