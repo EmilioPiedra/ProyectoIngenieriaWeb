@@ -9,6 +9,10 @@ import Signup from './rutas/Signup';
 import RutaProtegida from './rutas/RutaProtegita';
 import Dashboard from './rutas/Dashboard';
 import { AuthProvider } from './auth/AuthProvider';
+import ItemList from './rutas/ItemList';
+import OrderStatus from './rutas/OrderStatus';
+import LocationBike from './rutas/LocationBike';
+import PayMetod from './rutas/PayMetod';
 
 
 // Definir las rutas utilizando Remix
@@ -32,6 +36,21 @@ const routes: RouteObject[] = [
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/ItemList",
+        element: <ItemList />,
+      },
+      {
+        path: "/OrderStatus",
+        element: <OrderStatus />,
+      },
+      {
+        path: "/LocationBike",
+        element: <LocationBike />,
+      }, {
+        path: "/PayPage",
+        element: <PayMetod />,
       }
     ]
   },

@@ -40,14 +40,35 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                                 style={{ width: "40px", height: "40px", marginRight: "15px" }}
                             />
                             <Link to="/dashboard" className="nav-link">
-                                <h1 className='name' style={{ display: "inline", color: "black" }}>BikeRental</h1>
+                                <h1 className="name" style={{ display: "inline", color: "black" }}>
+                                    BikeRental
+                                </h1>
                             </Link>
                         </div>
                         <div className="d-flex align-items-center">
-                            <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }} />
-                            <Link to="/dashboard" className="nav-link mx-3" style={{ color: 'white' }}>
-                                {auth.getUser() ? auth.getUser()?.name ?? "" : ""}
-                            </Link>
+                            <div style={{ position: 'relative' }}>
+                                <Link to="/OrderStatus">
+                                    <Icon icon="ep:shopping-cart" className="shopping-cart" style={{ color: 'white', fontSize: '40px' }} /></Link>
+                                {auth.cart.length > 0 && (
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '%',
+                                        transform: 'translate(-50%, -50%)',
+                                        background: 'red',
+                                        borderRadius: '50%',
+                                        padding: '2px 6px',
+                                        color: 'white',
+                                        fontSize: '12px',
+                                        fontWeight: 'bold',
+                                    }}>
+                                        {auth.cart.reduce((acc, item) => acc + item.quantity, 0)}
+                                    </div>
+                                )}
+                            </div>
+                            <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }}>
+                                {auth.getUser()?.name}
+                            </Icon>
                             <li>
                                 <a href="#" onClick={handleSignout} className="exit-button">
                                     Salir

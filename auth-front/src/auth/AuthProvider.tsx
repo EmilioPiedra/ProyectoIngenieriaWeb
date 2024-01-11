@@ -6,6 +6,10 @@ interface AuthProviderProps {
   children: React.ReactNode;
 }
 
+interface CartItem {
+  id: string;
+  quantity: number;
+}
 
 const AuthContext = createContext({
   isAuthenticated: false,
@@ -14,6 +18,9 @@ const AuthContext = createContext({
   getRefreshToken: () => { },
   getUser: () => ({} as User | undefined),
   signOut: () => { },
+  cart: [] as CartItem[],
+  addToCart: (id: string) => { },
+  removeFromCart: (id: string) => { },
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -21,6 +28,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [accessToken, setAccessToken] = useState<string>("");
   const [user, setUser] = useState<User>();
   const [isLoading, setIsLoading] = useState(true);
+  const [cart, setCart] = useState<CartItem[]>([]);
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
@@ -134,9 +142,42 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function getUser() {
     return user;
   }
+  function addToCart(id: string) {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === id);
+
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      } else {
+        return [...prevCart, { id, quantity: 1 }];
+      }
+    });
+    console.log('Cart after adding:', cart); // Verifica en la consola
+  }
+
+  function removeFromCart(id: string) {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === id);
+
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          return prevCart.filter((item) => item.id !== id);
+        } else {
+          return prevCart.map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          );
+        }
+      } else {
+        return prevCart;
+      }
+    });
+    console.log('Cart after removing:', cart); // Verifica en la consola
+  }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut }}>
+    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart }}>
       {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );
