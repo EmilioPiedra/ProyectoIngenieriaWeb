@@ -66,9 +66,8 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                                     </div>
                                 )}
                             </div>
-                            <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }}>
-                                {auth.getUser()?.name}
-                            </Icon>
+                            <Link to={"/UserInfo"}> <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }} /></Link>
+                            {auth.getUser()?.name}
                             <li>
                                 <a href="#" onClick={handleSignout} className="exit-button">
                                     Salir

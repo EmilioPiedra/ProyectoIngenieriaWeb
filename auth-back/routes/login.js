@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
                 jsonResponse(200, {
                     accessToken,
                     refreshToken,
-                    user: getUserInfo(user),
+                    user: getUserInfo(User),
                 })
             );
         } else {
@@ -41,9 +41,6 @@ router.post('/', async (req, res) => {
     }
 
 
-    res.status(200).json(jsonResponse(200, { user, accessToken, refreshToken }));
-
-    res.send('Signup route');
 });
 
 module.exports = router;

@@ -44,3 +44,8 @@ export interface Bicycle {
     image: string;
     // Añade otras propiedades según sea necesario
 }
+
+export interface CartItem {
+    id: string;
+    quantity: number;
+}

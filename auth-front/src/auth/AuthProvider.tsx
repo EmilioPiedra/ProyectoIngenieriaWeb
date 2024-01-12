@@ -1,15 +1,11 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import type { AccessTokenResponse, AuthResponse, User, OrderDetails, Bicycle } from "../types/types";
+import type { AccessTokenResponse, AuthResponse, User, OrderDetails, Bicycle, CartItem } from "../types/types";
 import { API_URL } from './constants';
 
 interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-interface CartItem {
-  id: string;
-  quantity: number;
-}
 
 const AuthContext = createContext({
   isAuthenticated: false,
@@ -23,7 +19,6 @@ const AuthContext = createContext({
   removeFromCart: (id: string) => { },
   saveOrderDetails: (details: OrderDetails) => { }, // Agrega saveOrderDetails
   getOrderDetails: () => ({} as OrderDetails), // Agrega getOrderDetails
-  saveSelectedBicycle: (bicycle: Bicycle) => { },
   getSelectedBicycle: () => ({} as Bicycle),
 });
 
@@ -203,7 +198,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, saveSelectedBicycle, getSelectedBicycle }}>
+    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, getSelectedBicycle }}>
       {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );

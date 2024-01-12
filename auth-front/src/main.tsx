@@ -13,7 +13,7 @@ import ItemList from './rutas/ItemList';
 import OrderStatus from './rutas/OrderStatus';
 import LocationBike from './rutas/LocationBike';
 import PayMetod from './rutas/PayMetod';
-
+import UserInfo from './rutas/UserInfo';
 
 // Definir las rutas utilizando Remix
 const routes: RouteObject[] = [
@@ -51,6 +51,10 @@ const routes: RouteObject[] = [
       }, {
         path: "/PayPage",
         element: <PayMetod />,
+      },
+      {
+        path: "/UserInfo",
+        element: <UserInfo />
       }
     ]
   },
