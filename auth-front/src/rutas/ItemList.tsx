@@ -22,7 +22,6 @@ export default function ItemList() {
     const [activeIndex, setActiveIndex] = useState(0);
     const navigate = useNavigate();
     const handleClick1 = () => {
-        // Navegar a la ruta 'ItemList' cuando se hace clic en el botón
         navigate('/LocationBike');
     };
     const handleClick2 = () => {
@@ -83,7 +82,7 @@ export default function ItemList() {
                                             <h5 className="card-title text-xl">{bicycle.name}</h5>
                                             <p className="card-text">{bicycle.description}</p>
                                             <p className="card-text text-xl">${bicycle.price}</p>
-                                            <button className="btn btn-flat btn-danger" onClick={() => auth.addToCart(bicycle.id)}>
+                                            <button className="btn btn-flat btn-danger" onClick={() => auth.addToCart(bicycle)}>
                                                 agregar
                                             </button>
                                             <button className="btn btn-flat btn-danger" onClick={() => auth.removeFromCart(bicycle.id)}>

@@ -2,7 +2,7 @@ import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
 
-export default function Dashboard() {
+export default function PayMetod() {
     const auth = useAuth();
     const navigate = useNavigate();
 

@@ -3,7 +3,7 @@ import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
 
-export default function Dashboard() {
+export default function LocationBike() {
     const auth = useAuth();
     const navigate = useNavigate();
     const [recogidaUbicacion, setRecogidaUbicacion] = useState('');
@@ -18,6 +18,16 @@ export default function Dashboard() {
     };
 
     const handleClick2 = () => {
+        // Guardar la información en el contexto de autenticación
+        auth.saveOrderDetails({
+            recogidaUbicacion,
+            recogidaFecha,
+            recogidaHora,
+            devolucionUbicacion,
+            devolucionFecha,
+            devolucionHora,
+        });
+
         navigate('/ItemList');
     };
 

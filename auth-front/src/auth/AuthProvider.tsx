@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import type { AccessTokenResponse, AuthResponse, User } from "../types/types";
+import type { AccessTokenResponse, AuthResponse, User, OrderDetails, Bicycle } from "../types/types";
 import { API_URL } from './constants';
 
 interface AuthProviderProps {
@@ -19,8 +19,12 @@ const AuthContext = createContext({
   getUser: () => ({} as User | undefined),
   signOut: () => { },
   cart: [] as CartItem[],
-  addToCart: (id: string) => { },
+  addToCart: (bicycle: Bicycle) => { },
   removeFromCart: (id: string) => { },
+  saveOrderDetails: (details: OrderDetails) => { }, // Agrega saveOrderDetails
+  getOrderDetails: () => ({} as OrderDetails), // Agrega getOrderDetails
+  saveSelectedBicycle: (bicycle: Bicycle) => { },
+  getSelectedBicycle: () => ({} as Bicycle),
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -29,6 +33,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
   const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
+  const [selectedBicycle, setSelectedBicycle] = useState<Bicycle | null>(null);
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
@@ -142,20 +148,25 @@ export function AuthProvider({ children }: AuthProviderProps) {
   function getUser() {
     return user;
   }
-  function addToCart(id: string) {
+  function addToCart(bicycle: Bicycle) {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === id);
+      const existingItem = prevCart.find((item) => item.id === bicycle.id);
 
       if (existingItem) {
+        // Si el elemento ya existe, solo actualiza la cantidad
         return prevCart.map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === bicycle.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        return [...prevCart, { id, quantity: 1 }];
+        // Si el elemento no existe, agrégalo al carrito con cantidad 1
+        const updatedCart = [...prevCart, { ...bicycle, quantity: 1 }];
+        // Luego, guarda la bicicleta seleccionada
+        saveSelectedBicycle(bicycle);
+        return updatedCart;
       }
     });
-    console.log('Cart after adding:', cart); // Verifica en la consola
   }
+
 
   function removeFromCart(id: string) {
     setCart((prevCart) => {
@@ -173,11 +184,26 @@ export function AuthProvider({ children }: AuthProviderProps) {
         return prevCart;
       }
     });
-    console.log('Cart after removing:', cart); // Verifica en la consola
+  }
+
+  function saveOrderDetails(details: OrderDetails) {
+    setOrderDetails(details);
+  }
+
+  function getOrderDetails() {
+    return orderDetails || ({} as OrderDetails);
+  }
+
+  function saveSelectedBicycle(bicycle: Bicycle) {
+    setSelectedBicycle(bicycle);
+  }
+
+  function getSelectedBicycle() {
+    return selectedBicycle || ({} as Bicycle);
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart }}>
+    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, saveSelectedBicycle, getSelectedBicycle }}>
       {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );

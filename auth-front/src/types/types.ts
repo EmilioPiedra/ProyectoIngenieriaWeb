@@ -26,3 +26,21 @@ export interface AccessTokenResponse {
     };
     error?: string;
 }
+
+export interface OrderDetails {
+    recogidaUbicacion: string;
+    recogidaFecha: string;
+    recogidaHora: string;
+    devolucionUbicacion: string;
+    devolucionFecha: string;
+    devolucionHora: string;
+}
+
+export interface Bicycle {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    // Añade otras propiedades según sea necesario
+}
