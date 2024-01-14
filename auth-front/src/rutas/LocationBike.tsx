@@ -33,63 +33,84 @@ export default function LocationBike() {
 
     return (
         <PortalLayout>
-            <h1 className="text-3xl font-bold">Información Ubicación de la Bicicleta</h1>
-            <button type="button" onClick={handleClick1}>
+      <head>
+    <title>
+      <strong>Información Ubicación de la Bicicleta</strong>
+    </title>
+  </head>
+        <body>
+        <div className="button-container">
+              <button type="button" id="regresarButton" onClick={handleClick1}>
                 Regresar
-            </button>
-            <button type="button" onClick={handleClick2}>
+              </button>
+              <button type="button" id="continuarButton" onClick={handleClick2}>
                 Continuar
-            </button>
-            <form>
-                <div>
+              </button>
+            </div>
+          <div className="main-container">
+            <h1 className="text-3xl font-bold">Información Ubicación de la Bicicleta</h1>
+          
+            <div className="centered-form-container">
+              <form className="centered-form">
+                <div className="column">
+                  <div>
                     <label>Ubicación de Recogida:</label>
                     <input
-                        type="text"
-                        value={recogidaUbicacion}
-                        onChange={(e) => setRecogidaUbicacion(e.target.value)}
+                      type="text"
+                      value={recogidaUbicacion}
+                      onChange={(e) => setRecogidaUbicacion(e.target.value)}
                     />
-                </div>
-                <div>
+                  </div>
+                  <div>
                     <label>Fecha de Recogida:</label>
                     <input
-                        type="date"
-                        value={recogidaFecha}
-                        onChange={(e) => setRecogidaFecha(e.target.value)}
+                      type="date"
+                      value={recogidaFecha}
+                      onChange={(e) => setRecogidaFecha(e.target.value)}
                     />
-                </div>
-                <div>
+                  </div>
+                  <div>
                     <label>Hora de Recogida:</label>
                     <input
-                        type="time"
-                        value={recogidaHora}
-                        onChange={(e) => setRecogidaHora(e.target.value)}
+                      type="time"
+                      value={recogidaHora}
+                      onChange={(e) => setRecogidaHora(e.target.value)}
                     />
+                  </div>
                 </div>
-                <div>
+                <div className="column">
+                  <div>
                     <label>Ubicación de Devolución:</label>
                     <input
-                        type="text"
-                        value={devolucionUbicacion}
-                        onChange={(e) => setDevolucionUbicacion(e.target.value)}
+                      type="text"
+                      value={devolucionUbicacion}
+                      onChange={(e) => setDevolucionUbicacion(e.target.value)}
                     />
-                </div>
-                <div>
+                  </div>
+                  <div>
                     <label>Fecha de Devolución:</label>
                     <input
-                        type="date"
-                        value={devolucionFecha}
-                        onChange={(e) => setDevolucionFecha(e.target.value)}
+                      type="date"
+                      value={devolucionFecha}
+                      onChange={(e) => setDevolucionFecha(e.target.value)}
                     />
-                </div>
-                <div>
+                  </div>
+                  <div>
                     <label>Hora de Devolución:</label>
                     <input
-                        type="time"
-                        value={devolucionHora}
-                        onChange={(e) => setDevolucionHora(e.target.value)}
+                      type="time"
+                      value={devolucionHora}
+                      onChange={(e) => setDevolucionHora(e.target.value)}
                     />
+                  </div>
                 </div>
-            </form>
-        </PortalLayout>
+              </form>
+            </div>
+          </div>
+        </body>
+      </PortalLayout>
+      
+
+      
     );
 }
