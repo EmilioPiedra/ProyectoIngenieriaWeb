@@ -52,16 +52,18 @@ export default function ItemList() {
 
     return (
         <PortalLayout>
-            <h1 className="text-3xl font-bold">Dashboard de {auth.getUser()?.name}</h1>
+               <div className="button-container">
+              <button type="button" id="regresarButton" onClick={handleClick1}>
+                Regresar
+              </button>
+              <button type="button" id="continuarButton" onClick={handleClick2}>
+                Continuar
+              </button>
+            </div>
 
             <div>
-                <h2 className="text-2xl font-bold mb-4">Listado de Bicicletas</h2>
-                <button type="button" onClick={handleClick1}>
-                    Regresar
-                </button>
-                <button type="button" onClick={handleClick2}>
-                    Continuar
-                </button>
+            <h2 className="text-2xl font-bold mb-4 text-center">Seleccionar Bicicleta</h2>
+               
                 <Carousel
                     activeIndex={activeIndex}
                     onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
@@ -82,12 +84,13 @@ export default function ItemList() {
                                             <h5 className="card-title text-xl">{bicycle.name}</h5>
                                             <p className="card-text">{bicycle.description}</p>
                                             <p className="card-text text-xl">${bicycle.price}</p>
-                                            <button className="btn btn-flat btn-danger" onClick={() => auth.addToCart(bicycle)}>
-                                                agregar
-                                            </button>
-                                            <button className="btn btn-flat btn-danger" onClick={() => auth.removeFromCart(bicycle.id)}>
-                                                quitar
-                                            </button>
+                                            <button className="btn btn-flat btn-danger mb-2 mx-2" onClick={() => auth.addToCart(bicycle)}>
+  Agregar
+</button>
+<button className="btn btn-flat btn-danger mb-2 mx-2" onClick={() => auth.removeFromCart(bicycle.id)}>
+  Quitar
+</button>
+
                                         </div>
                                     </div>
                                 </div>
