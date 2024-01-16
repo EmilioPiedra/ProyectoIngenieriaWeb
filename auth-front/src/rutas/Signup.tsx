@@ -65,6 +65,7 @@ export default function Signup() {
     }
     return <>
         <DefaultLayout>
+        <div className="fondo-negro">
             <p></p>
             <div className="login-container">
                 <h1>Registrarse</h1>
@@ -100,7 +101,12 @@ export default function Signup() {
                     <button type="submit">Registrar</button>
                 </form>
             </div>
-            <footer id='footersing'>BikeRental@2023</footer>
+            </div>
+
+            <footer id="footer">
+                <div className="nombrefooter">BikeRental@2023</div>
+            
+             </footer>
         </DefaultLayout>
     </>;
 }

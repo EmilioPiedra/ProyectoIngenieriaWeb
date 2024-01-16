@@ -55,6 +55,8 @@ export default function Login() {
 
     return (
         <DefaultLayout>
+                  <div className="fondo-negro">
+
             <p></p>
             <div className="login-container">
                 <h1>Iniciar Sesión</h1>
@@ -69,6 +71,8 @@ export default function Login() {
                     <button type="submit">Iniciar Sesión</button>
                 </form>
             </div>
+            </div>
+
             <footer id="footer">
                 <div className="nombrefooter">BikeRental@2023</div>
             

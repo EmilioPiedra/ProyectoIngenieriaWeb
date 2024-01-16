@@ -291,3 +291,18 @@ label {
 label {
   margin-right: 10px;
 }
+
+
+#footer {
+  background-color: #000000;
+  color: #ffffff; /* Ajusta el color del texto según sea necesario para asegurar la visibilidad en el fondo negro */
+}
+
+.nombrefooter {
+  /* Estilos adicionales para el contenido del pie de página si es necesario */
+}
+.login-form button {
+  background-color: #C5A76A;
+  color: #ffffff; /* Texto en color blanco para contrastar con el fondo */
+  /* Puedes agregar estilos adicionales según sea necesario */
+}
