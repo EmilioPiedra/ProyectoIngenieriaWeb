@@ -62,9 +62,9 @@ export default function ItemList() {
                 Continuar
               </button>
             </div>
+            <h1 className="text-2xl font-bold mb-4 text-center mx-auto">Seleccionar Bicicleta</h1>
 
             <div className="main-container">
-            <h1 className="text-2xl font-bold mb-4 text-center">Seleccionar Bicicleta</h1>
                
                 <Carousel
                     activeIndex={activeIndex}
