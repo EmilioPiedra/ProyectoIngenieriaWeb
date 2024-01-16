@@ -306,3 +306,29 @@ label {
   color: #ffffff; /* Texto en color blanco para contrastar con el fondo */
   /* Puedes agregar estilos adicionales según sea necesario */
 }
+
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#regresarButton,
+#continuarButton {
+  /* Estilos comunes para ambos botones */
+  padding: 10px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+#regresarButton {
+  /* Estilos específicos para el botón "Regresar" */
+  margin-right: 10px; /* Ajusta la distancia a tu preferencia */
+}
+
+#continuarButton {
+  /* Estilos específicos para el botón "Continuar" */
+  margin-left: 1270px; /* Ajusta la distancia a tu preferencia */
+}

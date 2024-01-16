@@ -33,13 +33,9 @@ export default function LocationBike() {
 
     return (
         <PortalLayout>
-      <head>
-    <title>
-      <strong>Información Ubicación de la Bicicleta</strong>
-    </title>
-  </head>
-        <body>
-        <div className="button-container">
+                         <div className="fondo-negro">
+
+              <div className="button-container">
               <button type="button" id="regresarButton" onClick={handleClick1}>
                 Regresar
               </button>
@@ -47,6 +43,7 @@ export default function LocationBike() {
                 Continuar
               </button>
             </div>
+            
           <div className="main-container">
             <h1 className="text-3xl font-bold">Información Ubicación de la Bicicleta</h1>
           
@@ -107,7 +104,8 @@ export default function LocationBike() {
               </form>
             </div>
           </div>
-        </body>
+          </div>
+
       </PortalLayout>
       
 
