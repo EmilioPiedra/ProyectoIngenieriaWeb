@@ -16,6 +16,7 @@ export default function UserInfo() {
 
     return (
         <PortalLayout>
+            <div className="fondo-negro">
             <div className="user-info-container">
                 <h1 className="text-3xl font-bold">Información de {user?.name}</h1>
                 <div>
@@ -41,6 +42,8 @@ export default function UserInfo() {
                     Continuar
                 </button>
             </div>
+        </div>
+        <footer id='footerhome'>BikeRental@2023</footer>
         </PortalLayout>
     );
 }

@@ -428,3 +428,40 @@ label {
   text-align: left;
   /* Alinear la respuesta a la izquierda */
 }
+
+/* css de UserInfo */
+.user-info-container {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #FFF;
+  text-align: center;
+}
+
+.user-info-container > div {
+  margin-bottom: 10px;
+}
+
+.user-info-container > div > strong {
+  font-weight: bold;
+}
+
+.user-info-container > div > span {
+  font-size: 14px;
+}
+
+.user-info-container > button {
+  margin-top: 20px;
+  background-color: #C5A76A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
