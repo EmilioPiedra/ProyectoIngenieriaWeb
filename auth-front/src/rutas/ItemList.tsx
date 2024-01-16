@@ -52,6 +52,8 @@ export default function ItemList() {
 
     return (
         <PortalLayout>
+                                     <div className="fondo-negro">
+
                <div className="button-container">
               <button type="button" id="regresarButton" onClick={handleClick1}>
                 Regresar
@@ -61,8 +63,8 @@ export default function ItemList() {
               </button>
             </div>
 
-            <div>
-            <h2 className="text-2xl font-bold mb-4 text-center">Seleccionar Bicicleta</h2>
+            <div className="main-container">
+            <h1 className="text-2xl font-bold mb-4 text-center">Seleccionar Bicicleta</h1>
                
                 <Carousel
                     activeIndex={activeIndex}
@@ -108,6 +110,7 @@ export default function ItemList() {
                     <button className="btn btn-danger" onClick={nextSlide} style={{ color: 'white' }}>
                         Next
                     </button>
+                </div>
                 </div>
 
             </div>
