@@ -4,7 +4,8 @@ import { useAuth } from "../auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from '../auth/constants';
 import { AuthResponse, AuthResponseError } from '../types/types';
-import imagenlogonodo from "../imagenes/imagenlogonodo.png"
+import { Icon } from '@iconify/react';
+
 export default function Login() {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -55,28 +56,25 @@ export default function Login() {
 
     return (
         <DefaultLayout>
-                  <div className="fondo-negro">
-
-            <p></p>
-            <div className="login-container">
-                <h1>Iniciar Sesión</h1>
-                {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                <form className="login-form" onSubmit={handleSubnit}>
-                    <label htmlFor="username">Correo</label>
-                    <input type="text" id="username" name="username" value={userName} onChange={(e) => setUserName(e.target.value)} />
-
-                    <label htmlFor="password">Contraseña</label>
-                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-                    <button type="submit">Iniciar Sesión</button>
-                </form>
+            <div className="fondo-negro">
+                <p></p>
+                <h1 className="login">Iniciar Sesión</h1>
+                <div className="login-container" style={{ color: 'black' }}>
+                    <div className="icono">
+                        <Icon icon="bx:user" style={{ color: 'black', fontSize: '70px' }} />
+                    </div>
+                    {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                    <form className="login-form" onSubmit={handleSubnit}>
+                        <input type="text" id="username" name="username" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Usuario" />
+                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" Contraseña" />
+                        <button type="submit">Iniciar Sesión</button>
+                    </form>
+                </div>
             </div>
-            </div>
-
             <footer id="footer">
                 <div className="nombrefooter">BikeRental@2023</div>
-            
-             </footer>
+
+            </footer>
         </DefaultLayout>
     );
 }

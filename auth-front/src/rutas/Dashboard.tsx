@@ -13,10 +13,17 @@ export default function Dashboard() {
 
   return (
     <PortalLayout>
-      <h1 className="text-3xl font-bold">Dashboard de {auth.getUser()?.name}</h1>
-      <button type="button" onClick={handleClick}>
-        Continuar
-      </button>
+      <div className="fondo-negro">
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick}>
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </PortalLayout>
   );
 }

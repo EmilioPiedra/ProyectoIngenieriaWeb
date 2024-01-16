@@ -6,70 +6,7 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.login-container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-top: 10px;
-}
-
-input {
-  padding: 8px;
-  margin-bottom: 15px;
-}
-
-button {
-  background-color: #BE0F30;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #8c0a25;
-  /* Cambia el color al pasar el ratón sobre el botón */
-}
-
-/*layout*/
-.name {
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.login {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.signup {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.fondo-negro {
-  background-color: black;
-  color: white;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 20px;
-}
-
+/* home */
 .titulo {
   font-size: 30px;
   margin-bottom: 20px;
@@ -81,23 +18,13 @@ button:hover {
   max-height: 200px;
   object-fit: cover;
   object-position: 50% 90%;
-  /* Puedes ajustar estos valores según sea necesario */
   border-radius: 10px;
   margin-top: 10px;
 }
 
-
 .introduccion {
   font-size: 35px;
   margin-top: 20px;
-  font-weight: bold;
-  /* Añade esta línea para aplicar negrita */
-
-}
-
-.destacado {
-  color: #C5A76A;
-  /* Reemplaza 'TuColorDeseado' con el color que desees */
   font-weight: bold;
 }
 
@@ -148,9 +75,118 @@ button:hover {
 
 .imagen-requisitos img {
   width: 70%;
-  /* Ajusta según sea necesario */
   border-radius: 5px;
 }
+
+.destacado {
+  color: #C5A76A;
+  font-weight: bold;
+}
+
+/* home */
+
+
+/* login */
+.icono {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.login-container {
+  width: 350px;
+  height: 350px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #FFF;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #282828;
+  color: #ffffff;
+  /* Cambia el color del texto según tu diseño */
+  border-radius: 8px;
+}
+
+button {
+  color: #fff;
+  padding: 10px 5px;
+  /* Ajusta el padding para hacer el botón más corto */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: auto;
+  /* Permite que el ancho del botón sea ajustado automáticamente según el contenido */
+}
+
+/* login */
+
+
+/* Signup */
+
+.Signup-container {
+  background: #FFF;
+  width: 450px;
+  height: auto;
+  margin: auto;
+  padding: 45px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo del formulario de registro */
+.Signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Signup */
+
+
+/*layout*/
+.name {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.login {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.signup {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.fondo-negro {
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+}
+
+
 
 /* boton salir*/
 .exit-button {
@@ -165,48 +201,63 @@ button:hover {
 
 .exit-button:hover {
   background-color: #bd2130;
-  /* Cambia el color de fondo al pasar el ratón sobre el botón */
 }
+
+/* boton salir*/
+
 
 /* Cambia el color de los íconos de navegación del carousel a rojo */
 .carousel-control-prev-icon::before,
 .carousel-control-next-icon::before {
   color: rgb(177, 83, 83);
 }
-.nombrefooter{
+
+.nombrefooter {
   text-align: center;
   margin: 0;
 }
+
 #footer {
   justify-content: center;
   display: flex;
-  align-items: center; /* Alinea verticalmente en el centro */
-  padding: 10px; /* Añade algún espacio alrededor del contenido */
+  align-items: center;
+  /* Alinea verticalmente en el centro */
+  padding: 10px;
+  /* Añade algún espacio alrededor del contenido */
 }
-#footerhome{
+
+#footerhome {
   background: black;
   color: #fff;
   justify-content: center;
   display: flex;
-  align-items: center; /* Alinea verticalmente en el centro */
-  padding: 10px; /* Añade algún espacio alrededor del contenido */
+  align-items: center;
+  /* Alinea verticalmente en el centro */
+  padding: 10px;
+  /* Añade algún espacio alrededor del contenido */
 }
-#footersing{
+
+#footersing {
   background: white;
   color: black;
   justify-content: center;
   display: flex;
-  align-items: center; /* Alinea verticalmente en el centro */
-  padding: 10px; /* Añade algún espacio alrededor del contenido */
+  align-items: center;
+  /* Alinea verticalmente en el centro */
+  padding: 10px;
+  /* Añade algún espacio alrededor del contenido */
 }
+
 .logonodo {
   justify-content: flex-start;
   height: 50px;
   width: 50px;
   /* margin-right: 10px; /* Añade algún espacio entre la imagen y el texto si es necesario */
-} */
-.frase {
-  font-size: 40px; /* Ajusta el tamaño de fuente según sea necesario */
+}
+
+*/ .frase {
+  font-size: 40px;
+  /* Ajusta el tamaño de fuente según sea necesario */
   margin-top: 20px;
   font-weight: bold;
 }
@@ -230,7 +281,8 @@ h1 {
 }
 
 button {
-  margin: 0; /* Eliminar el margen predeterminado de los botones */
+  margin: 0;
+  /* Eliminar el margen predeterminado de los botones */
 }
 
 .centered-form {
@@ -253,11 +305,19 @@ button {
 label {
   margin-right: 10px;
 }
+
+.centered-form label,
+h1 {
+  color: black;
+}
+
 .main-container {
-  max-width: 600px;
+  background-color: #fff;
+  width: 600px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
+
 }
 
 .button-container {
@@ -295,40 +355,76 @@ label {
 
 #footer {
   background-color: #000000;
-  color: #ffffff; /* Ajusta el color del texto según sea necesario para asegurar la visibilidad en el fondo negro */
+  color: #ffffff;
+  /* Ajusta el color del texto según sea necesario para asegurar la visibilidad en el fondo negro */
 }
 
 .nombrefooter {
   /* Estilos adicionales para el contenido del pie de página si es necesario */
 }
+
 .login-form button {
   background-color: #C5A76A;
-  color: #ffffff; /* Texto en color blanco para contrastar con el fondo */
+  color: #ffffff;
+  /* Texto en color blanco para contrastar con el fondo */
+  /* Puedes agregar estilos adicionales según sea necesario */
+}
+
+.Signup-form button {
+  background-color: #C5A76A;
+  color: #ffffff;
+  /* Texto en color blanco para contrastar con el fondo */
   /* Puedes agregar estilos adicionales según sea necesario */
 }
 
 
 
-.button-container {
+
+.button-container button {
+  margin: 1rem;
+  right: 1rem;
+}
+
+
+
+.order-status-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.order-details {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  /* Centra los detalles verticalmente */
+  text-align: center;
+  /* Centra el texto dentro de la sección de detalles */
 }
 
-#regresarButton,
-#continuarButton {
-  /* Estilos comunes para ambos botones */
-  padding: 10px;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
+.order-detail {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  display: flex;
+  /* Mostrar los elementos en línea */
+  align-items: center;
+  /* Alinear los elementos verticalmente */
 }
 
-#regresarButton {
-  /* Estilos específicos para el botón "Regresar" */
-  margin-right: 10px; /* Ajusta la distancia a tu preferencia */
+.order-detail p:first-child {
+  font-weight: 600;
+  /* Resaltar la pregunta */
+  margin-right: 10px;
+  /* Espacio entre la pregunta y la respuesta */
 }
 
-#continuarButton {
-  /* Estilos específicos para el botón "Continuar" */
-  margin-left: 1270px; /* Ajusta la distancia a tu preferencia */
+.order-detail p:nth-child(2) {
+  text-align: left;
+  /* Alinear la respuesta a la izquierda */
 }

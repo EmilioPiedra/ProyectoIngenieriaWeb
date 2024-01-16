@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
@@ -16,36 +15,64 @@ export default function OrderStatus() {
 
     return (
         <PortalLayout>
-            <button type="button" onClick={handleClick}>
-                regresar
-            </button>
+            <div className="button-container">
+                <button type="button" id="regresarButton" onClick={handleClick}>
+                    regresar
+                </button>
+            </div>
             <h1 className="text-3xl font-bold">Order Status</h1>
 
-            <div>
+            <div className="order-status-container">
                 {/* Mostrar los detalles del pedido obtenidos con getOrderDetails */}
-                <p>Recogida Ubicación: {orderDetails.recogidaUbicacion}</p>
-                <p>Recogida Fecha: {orderDetails.recogidaFecha}</p>
-                <p>Recogida Hora: {orderDetails.recogidaHora}</p>
-                <p>Devolución Ubicación: {orderDetails.devolucionUbicacion}</p>
-                <p>Devolución Fecha: {orderDetails.devolucionFecha}</p>
-                <p>Devolución Hora: {orderDetails.devolucionHora}</p>
+                <div className="order-details">
+                    <div className="order-detail">
+                        <p>Recogida Ubicación:</p>
+                        <p>{orderDetails.recogidaUbicacion}</p>
+                    </div>
+                    <div className="order-detail">
+                        <p>Recogida Fecha:</p>
+                        <p>{orderDetails.recogidaFecha}</p>
+                    </div>
+                    <div className="order-detail">
+                        <p>Recogida Hora:</p>
+                        <p>{orderDetails.recogidaHora}</p>
+                    </div>
+
+                    <div className="order-detail">
+                        <p>Devolución Ubicación:</p>
+                        <p>{orderDetails.devolucionUbicacion}</p>
+                    </div>
+                    <div className="order-detail">
+                        <p>Devolución Fecha:</p>
+                        <p>{orderDetails.devolucionFecha}</p>
+                    </div>
+                    <div className="order-detail">
+                        <p>Devolución Hora:</p>
+                        <p>{orderDetails.devolucionHora}</p>
+                    </div>
+                </div>
 
                 {/* Mostrar la bicicleta seleccionada si existe */}
                 {selectedBicycle && (
-                    <div>
-                        <p>Bicicleta seleccionada:</p>
-                        <p>Descripción: {selectedBicycle.description}</p>
-                        <p>Precio: ${selectedBicycle.price}</p>
+                    <div className="bicycle-details">
+                        <div className="bicycle-detail">
+                            <p><b>Bicicleta seleccionada:</b></p>
+                            <p>{selectedBicycle.description}</p>
+                        </div>
+                        <div className="bicycle-detail">
+                            <p><b>Precio:</b></p>
+                            <p>${selectedBicycle.price}</p>
+                        </div>
                         <img
                             src={selectedBicycle.image}
-                            className="card-img-top"
+                            className="bicycle-img"
                             alt={selectedBicycle.name}
-                            style={{ objectFit: 'cover', height: '300px', flex: '1' }}
+                            style={{ objectFit: 'cover', height: '300px' }}
                         />
-                        {/* Agrega más detalles según sea necesario */}
                     </div>
                 )}
             </div>
+            <footer id='footersing'>BikeRental@2023</footer>
         </PortalLayout>
     );
 }
