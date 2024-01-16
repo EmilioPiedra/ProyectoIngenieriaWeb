@@ -456,6 +456,7 @@ h1 {
 }
 
 .user-info-container > button {
+  justify-content: center;
   margin-top: 20px;
   background-color: #C5A76A;
   color: white;
@@ -463,5 +464,11 @@ h1 {
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px; /* Ajusta el ancho según tu preferencia */
 }
+
+
 

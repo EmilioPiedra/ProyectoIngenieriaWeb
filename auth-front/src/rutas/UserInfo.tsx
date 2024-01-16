@@ -39,7 +39,7 @@ export default function UserInfo() {
                 </div>
                 {/* Puedes mostrar más detalles según la estructura de tu modelo de usuario */}
                 <button type="button" onClick={handleClick}>
-                    Continuar
+                    Regresar
                 </button>
             </div>
         </div>
