@@ -75,15 +75,15 @@ export default function Signup() {
                 <div className="Signup-container">
                     {!!errorResponse && <div className='errorMessage' style={{ color: 'black' }}>{errorResponse}</div>}
                     <form className="login-form" onSubmit={handleSubnit}>
-                        <input type="text" id="name" required name="name" value={name} onChange={(e) => setName(e.target.value)} />
-                        <input type="text" id="apellido" required name="apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-                        <input type="text" id="UserName" required name="UserName" value={userName} onChange={(e) => setUserName(e.target.value)} />
-                        <input type="text" id="pais" required name="pais" value={pais} onChange={(e) => setPais(e.target.value)} />
-                        <input type="text" id="email" required name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="text" id="cedula" maxLength={10} required name="cedula" value={cedula} onChange={(e) => setCedula(e.target.value)} />
-                        <input type="password" required id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input type="password" id="confirmPassword" required name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                        <input type="date" required id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} />
+                        <input type="text" id="name" required name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre"/>
+                        <input type="text" id="apellido" required name="apellido" value={apellido} onChange={(e) => setApellido(e.target.value)} placeholder="Apellido"/>
+                        <input type="text" id="UserName" required name="UserName" value={userName} onChange={(e) => setUserName(e.target.value)}placeholder="Nombre Usuario" />
+                        <input type="text" id="pais" required name="pais" value={pais} onChange={(e) => setPais(e.target.value)} placeholder="País"/>
+                        <input type="text" id="email" required name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Correo electronico"/>
+                        <input type="text" id="cedula" maxLength={10} required name="cedula" value={cedula} onChange={(e) => setCedula(e.target.value)}placeholder="Cédula" />
+                        <input type="password" required id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña"/>
+                        <input type="password" id="confirmPassword" required name="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirmar contraseña"/>
+                        <input type="date" required id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)}placeholder="Fecha de nacimiento" />
                         <button type="submit">Registrar</button>
                     </form>
                 </div>
