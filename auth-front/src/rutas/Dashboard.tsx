@@ -16,8 +16,18 @@ const addressList: Address[] = [
   { name: 'Dirección 1', lat: -3.996, lon: -79.206 },
   { name: 'Dirección 2', lat: -3.997, lon: -79.207 },
   { name: 'Dirección 3', lat: -3.998, lon: -79.208 },
+  { name: 'Dirección 4', lat: -3.999, lon: -79.209 },
+  { name: 'Dirección 5', lat: -4.000, lon: -79.210 },
+  { name: 'Dirección 6', lat: -4.001, lon: -79.211 },
+  { name: 'Dirección 7', lat: -4.002, lon: -79.212 },
+  { name: 'Dirección 8', lat: -4.003, lon: -79.213 },
+  { name: 'Dirección 9', lat: -4.004, lon: -79.214 },
+  { name: 'Dirección 10', lat: -4.005, lon: -79.215 },
+  { name: 'Dirección 11', lat: -4.006, lon: -79.216 },
+  { name: 'Dirección 12', lat: -4.007, lon: -79.217 },
   // Agrega más direcciones según sea necesario
 ];
+
 
 export default function Dashboard() {
   const auth = useAuth();
@@ -55,6 +65,7 @@ export default function Dashboard() {
 
   return (
     <PortalLayout>
+      
       <div className="container">
         <div className="row">
           <div className="col-6">
@@ -65,7 +76,7 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="address-list-container">
-        <h2>Direcciones en Loja, Ecuador</h2>
+        <h2><b>Lugares disponibles Loja</b></h2>
         <ul className="address-list">
           {addressList.map((address, index) => (
             <li key={index} onClick={() => handleAddressClick(address)}>

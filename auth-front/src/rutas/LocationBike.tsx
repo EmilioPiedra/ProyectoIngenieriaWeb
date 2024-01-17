@@ -116,7 +116,7 @@ export default function LocationBike() {
           </div>
         </div>
       </div>
-      <footer id='footersing'>BikeRental@2023</footer>
+      <footer className='orderfototer'>BikeRental@2023</footer>
     </PortalLayout>
   );
 }
