@@ -73,7 +73,6 @@ export default function Login() {
             </div>
             <footer id="footer">
                 <div className="nombrefooter">BikeRental@2023</div>
-
             </footer>
         </DefaultLayout>
     );

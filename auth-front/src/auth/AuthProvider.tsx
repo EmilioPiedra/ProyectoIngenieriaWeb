@@ -20,6 +20,8 @@ const AuthContext = createContext({
   saveOrderDetails: (details: OrderDetails) => { }, // Agrega saveOrderDetails
   getOrderDetails: () => ({} as OrderDetails), // Agrega getOrderDetails
   getSelectedBicycle: () => ({} as Bicycle),
+  saveCurrentLocation: (location: string) => { }, // Nueva función
+  getCurrentLocation: () => undefined as string | undefined,
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -30,9 +32,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
   const [selectedBicycle, setSelectedBicycle] = useState<Bicycle | null>(null);
+  const [currentLocation, setCurrentLocation] = useState<string | undefined>(undefined);
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
+
+  const saveCurrentLocation = (location: string) => {
+    setCurrentLocation(location);
+  };
+
+  const getCurrentLocation = () => {
+    return currentLocation;
+  };
 
   async function requestNewAccessToken(refreshToken: string) {
     try {
@@ -198,7 +209,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, getSelectedBicycle }}>
+    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, getSelectedBicycle, saveCurrentLocation, getCurrentLocation, }}>
       {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );

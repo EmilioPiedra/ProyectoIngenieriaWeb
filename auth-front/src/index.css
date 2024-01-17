@@ -385,7 +385,14 @@ label {
   right: 1rem;
 }
 
+#pagar-resumen {
+  background-color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 400px;
+  margin: 0 auto;
 
+}
 
 .order-status-container {
   background-color: #ffffff;
@@ -443,19 +450,33 @@ h1 {
   text-align: center;
 }
 
-.user-info-container > div {
+.text-3xl.font-bold {
+  color: black;
+}
+
+#titulo {
+  color: #FFF;
+}
+
+.order-details p,
+.bicycle-details p {
+  color: black;
+}
+
+
+.user-info-container>div {
   margin-bottom: 10px;
 }
 
-.user-info-container > div > strong {
+.user-info-container>div>strong {
   font-weight: bold;
 }
 
-.user-info-container > div > span {
+.user-info-container>div>span {
   font-size: 14px;
 }
 
-.user-info-container > button {
+.user-info-container>button {
   justify-content: center;
   margin-top: 20px;
   background-color: #C5A76A;
@@ -467,8 +488,6 @@ h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 150px; /* Ajusta el ancho según tu preferencia */
+  width: 150px;
+  /* Ajusta el ancho según tu preferencia */
 }
-
-
-

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { API_URL } from '../auth/constants';
 import { Carousel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 // Definimos un tipo para representar la estructura de una bicicleta
 interface Bicycle {
@@ -21,13 +22,20 @@ export default function ItemList() {
     const [bicycles, setBicycles] = useState<Bicycle[]>([]); // Especificamos el tipo Bicycle[]
     const [activeIndex, setActiveIndex] = useState(0);
     const navigate = useNavigate();
+    const location = useLocation();
+
     const handleClick1 = () => {
+        const currentLocation = "/LocationBike";
+        auth.saveCurrentLocation(currentLocation);
         navigate('/LocationBike');
     };
+
     const handleClick2 = () => {
-        // Navegar a la ruta 'ItemList' cuando se hace clic en el botón
+        const currentLocation = "/PayPage";
+        auth.saveCurrentLocation(currentLocation);
         navigate('/PayPage');
     };
+
     useEffect(() => {
         // Realiza la solicitud al servidor para obtener la lista de bicicletas
         const fetchBicycles = async () => {
@@ -68,9 +76,7 @@ export default function ItemList() {
                     </div>
                 </div>
                 <h1 className="text-2xl font-bold mb-4 text-center mx-auto">Seleccionar Bicicleta</h1>
-
                 <div className="main-container">
-
                     <Carousel
                         activeIndex={activeIndex}
                         onSelect={(selectedIndex) => setActiveIndex(selectedIndex)}
@@ -117,8 +123,8 @@ export default function ItemList() {
                         </button>
                     </div>
                 </div>
-
             </div>
+            <footer id='footersing'>BikeRental@2023</footer>
         </PortalLayout>
     );
 }

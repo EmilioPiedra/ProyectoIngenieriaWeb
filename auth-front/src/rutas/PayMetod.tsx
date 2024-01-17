@@ -1,20 +1,32 @@
 import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 
 export default function PayMetod() {
     const auth = useAuth();
     const navigate = useNavigate();
 
+    const [cardNumber, setCardNumber] = useState('');
+    const [expirationDate, setExpirationDate] = useState('');
+    const [cvv, setCVV] = useState('');
+    const [cardHolder, setCardHolder] = useState(''); // Nuevo estado para el titular de la tarjeta
+    const location = useLocation();
+
     const handleClick1 = () => {
-        // Navegar a la ruta 'ItemList' cuando se hace clic en el botón
+        const currentLocation = "/ItemList";
+        auth.saveCurrentLocation(currentLocation);
         navigate('/ItemList');
     };
 
-    const handleClick2 = () => {
-        // Navegar a la ruta 'ItemList' cuando se hace clic en el botón
-        navigate('/PayMetod');
+    const handleSubmit = () => {
+        console.log('Información del pago:', { cardNumber, expirationDate, cvv });
+        // También puedes realizar otras acciones, como cambiar el estado para indicar que el pago se ha realizado con éxito.
     };
+    const orderDetails = auth.getOrderDetails();
+    const selectedBicycle = auth.getSelectedBicycle();
     return (
         <PortalLayout>
             <div className="fondo-negro">
@@ -29,7 +41,104 @@ export default function PayMetod() {
                         </div>
                     </div>
                 </div>
+                <p></p>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 order-md-2 mb-4">
+                            <div id='pagar-resumen' className="order-status-container">
+                                {/* Mostrar los detalles del pedido obtenidos con getOrderDetails */}
+                                <div className="order-details">
+                                    <div className="order-detail">
+                                        <p>Recogida Ubicación:</p>
+                                        <p>{orderDetails.recogidaUbicacion}</p>
+                                    </div>
+                                    <div className="order-detail">
+                                        <p>Recogida Fecha:</p>
+                                        <p>{orderDetails.recogidaFecha}</p>
+                                    </div>
+                                    <div className="order-detail">
+                                        <p>Recogida Hora:</p>
+                                        <p>{orderDetails.recogidaHora}</p>
+                                    </div>
+
+                                    <div className="order-detail">
+                                        <p>Devolución Ubicación:</p>
+                                        <p>{orderDetails.devolucionUbicacion}</p>
+                                    </div>
+                                    <div className="order-detail">
+                                        <p>Devolución Fecha:</p>
+                                        <p>{orderDetails.devolucionFecha}</p>
+                                    </div>
+                                    <div className="order-detail">
+                                        <p>Devolución Hora:</p>
+                                        <p>{orderDetails.devolucionHora}</p>
+                                    </div>
+                                </div>
+
+                                {/* Mostrar la bicicleta seleccionada si existe */}
+                                {selectedBicycle && (
+                                    <div className="bicycle-details">
+                                        <div className="bicycle-detail">
+                                            <p><b>Bicicleta seleccionada:</b></p>
+                                            <p>{selectedBicycle.description}</p>
+                                        </div>
+                                        <div className="bicycle-detail">
+                                            <p><b>Precio:</b></p>
+                                            <p>${selectedBicycle.price}</p>
+                                        </div>
+                                        <img
+                                            src={selectedBicycle.image}
+                                            className="bicycle-img"
+                                            alt={selectedBicycle.name}
+                                            style={{ objectFit: 'cover', height: '300px' }}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="col-6 d-flex justify-content-end">
+                            <form onSubmit={handleSubmit}>
+                                <label>
+                                    Titular de la Tarjeta:
+                                    <input
+                                        type="text"
+                                        value={cardHolder}
+                                        onChange={(e) => setCardHolder(e.target.value)}
+                                    />
+                                </label>
+                                <label>
+                                    Número de Tarjeta:
+                                    <input
+                                        type="text"
+                                        value={cardNumber}
+                                        onChange={(e) => setCardNumber(e.target.value)}
+                                    />
+                                </label>
+                                <label>
+                                    Fecha de Expiración:
+                                    <input
+                                        type="text"
+                                        value={expirationDate}
+                                        onChange={(e) => setExpirationDate(e.target.value)}
+                                    />
+                                </label>
+                                <label>
+                                    CVV:
+                                    <input
+                                        type="text"
+                                        value={cvv}
+                                        onChange={(e) => setCVV(e.target.value)}
+                                    />
+                                </label>
+                                <button type="button" onClick={handleSubmit} style={{ backgroundColor: '#BE0F30', color: '#fff' }}>
+                                    Pagar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <footer id='footersing'>BikeRental@2023</footer>
         </PortalLayout>
     );
 }

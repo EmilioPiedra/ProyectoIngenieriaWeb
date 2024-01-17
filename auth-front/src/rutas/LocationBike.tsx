@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 export default function LocationBike() {
   const auth = useAuth();
@@ -12,13 +13,17 @@ export default function LocationBike() {
   const [devolucionUbicacion, setDevolucionUbicacion] = useState('');
   const [devolucionFecha, setDevolucionFecha] = useState('');
   const [devolucionHora, setDevolucionHora] = useState('');
+  const location = useLocation();
 
   const handleClick1 = () => {
+    const currentLocation = '/Dashboard';
+    auth.saveCurrentLocation(currentLocation);
     navigate('/Dashboard');
+
   };
 
   const handleClick2 = () => {
-    // Guardar la información en el contexto de autenticación
+    const currentLocation = '/ItemList';
     auth.saveOrderDetails({
       recogidaUbicacion,
       recogidaFecha,
@@ -27,7 +32,7 @@ export default function LocationBike() {
       devolucionFecha,
       devolucionHora,
     });
-
+    auth.saveCurrentLocation(currentLocation);
     navigate('/ItemList');
   };
 
@@ -111,10 +116,7 @@ export default function LocationBike() {
           </div>
         </div>
       </div>
-
+      <footer id='footersing'>BikeRental@2023</footer>
     </PortalLayout>
-
-
-
   );
 }
