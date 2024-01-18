@@ -583,9 +583,12 @@ h1 {
 /* Estilos para el botón de regresar */
 #regresarButton {
   margin-top: 20px;
+  background-color: #C5A76A;
+  
 }
 #continuarButton {
   margin-top: 20px;
+  background-color: #C5A76A
 }
 /* Estilos para el pie de página */
 #footersing {

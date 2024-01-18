@@ -17,8 +17,8 @@ app.use(express.json());
 async function main() {
     await mongoose.connect(process.env.DB_CONNECTION_STRING);
     console.log("conectado a mongosse")
-    //await Bicycle.insertMany(bicyclesData);
-    //console.log("Datos iniciales insertados correctamente");
+    await Bicycle.insertMany(bicyclesData);
+    console.log("Datos iniciales insertados correctamente");
 }
 
 main().catch(console.error);
