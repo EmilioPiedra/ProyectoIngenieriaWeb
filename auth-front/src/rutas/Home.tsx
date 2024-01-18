@@ -2,6 +2,8 @@ import DefaultLayout from '../layout/DefaultLayout';
 import imagen from '../imagenes/imagenportada.jpg';
 import imagenrequisito from '../imagenes/imagenrequsito.jpg';
 import '../App.css';
+import imagen1 from '../imagenes/nodo.png';
+import imagen2 from '../imagenes/QUOHUB.png';
 export default function Home() {
   return <>
     <DefaultLayout>
@@ -86,6 +88,10 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="mi-div">
+      <img src={imagen1} alt="Imagen 1" />
+      <img src={imagen2} alt="Imagen 2" />
+    </div>
       <footer id='footerhome'>
   <div className="text-center">
     <p>Dirección: Mexico y Curazao Centro de Negocios Quo Hub. Loja-Ecuador</p>

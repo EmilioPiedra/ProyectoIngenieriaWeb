@@ -596,3 +596,17 @@ h1 {
   font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
   margin-bottom: 10px; /* Espaciado entre elementos de la lista */
 }
+.mi-div {
+  background-color: #C5A76A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 120px;
+}
+
+.mi-div img {
+  width: auto;
+  height: 90%;
+  margin: 0 10px; /* Ajusta el margen entre las imágenes según tus necesidades */
+}
