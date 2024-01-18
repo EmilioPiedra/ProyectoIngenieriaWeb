@@ -29,8 +29,8 @@ body {
 }
 
 .texto {
-  font-size: 30px;
-  font-style: normal;
+  font-size: 20px;
+  font-style: justify;
   font-weight: 300;
 }
 
@@ -255,11 +255,12 @@ button {
   /* margin-right: 10px; /* Añade algún espacio entre la imagen y el texto si es necesario */
 }
 
-*/ .frase {
-  font-size: 40px;
-  /* Ajusta el tamaño de fuente según sea necesario */
-  margin-top: 20px;
-  font-weight: bold;
+.frase {
+  font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
+  line-height: 1.5; /* Ajusta la altura de línea para mejorar la legibilidad */
+  color: #ffffff; /* Cambia el color del texto si es necesario */
+  text-align: justify;
+
 }
 
 
@@ -579,4 +580,19 @@ h1 {
 #footersing {
   text-align: center;
   margin-top: 20px;
+}
+
+
+.requisitos {
+  font-size: 16px; /* Ajusta el tamaño del texto según tus preferencias */
+}
+
+.requisitos ul {
+  list-style-type: none; /* Elimina los estilos de viñetas predeterminados */
+  padding: 0; /* Elimina el relleno predeterminado de la lista */
+}
+
+.requisitos li {
+  font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
+  margin-bottom: 10px; /* Espaciado entre elementos de la lista */
 }

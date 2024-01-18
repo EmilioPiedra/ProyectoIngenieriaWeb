@@ -86,7 +86,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer id='footerhome'>BikeRental@2023</footer>
+      <footer id='footerhome'>
+  <div className="text-center">
+    <p>Dirección: Mexico y Curazao Centro de Negocios Quo Hub. Loja-Ecuador</p>
+    <p>(07) 2102999 | info@electritelecom.com</p>
+    <p>BikeRental@2023</p>
+  </div>
+</footer>
+
     </DefaultLayout>  
   </>;
 }
