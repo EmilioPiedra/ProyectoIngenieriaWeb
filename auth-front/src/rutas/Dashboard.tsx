@@ -86,7 +86,7 @@ export default function Dashboard() {
         </ul>
       </div>
       <div id="map" className="map-container"></div>
-      <footer id='footersing'>BikeRental@2023</footer>
+      <footer className='orderfototer'>BikeRental@2023</footer>
     </PortalLayout>
   );
 }

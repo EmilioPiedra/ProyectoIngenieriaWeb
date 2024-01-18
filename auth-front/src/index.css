@@ -626,3 +626,19 @@ h1 {
   justify-content: space-between;
   margin: 0 10px; /* Ajusta el margen entre las imágenes según tus necesidades */
 }
+
+/* dashoard color de la lista de direcciones */
+.address-list li {
+  background: #282828;
+  color: #FFF;
+}
+.address-list-container {
+  background-color: #FFF;
+}
+body {
+  background-color: black;
+}
+
+
+
+
