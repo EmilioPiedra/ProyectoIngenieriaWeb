@@ -584,7 +584,9 @@ h1 {
 #regresarButton {
   margin-top: 20px;
 }
-
+#continuarButton {
+  margin-top: 20px;
+}
 /* Estilos para el pie de página */
 #footersing {
   text-align: center;
