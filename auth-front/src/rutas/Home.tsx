@@ -32,8 +32,11 @@ export default function Home() {
               
             </p>
           </div>
+          
           <div className="col-md-6">
+          <h3>Resumen Bicicletas:</h3>
             <table className="tabla mb-4">
+            
               <thead>
                 <tr>
                   <th>Bici para paseo urbano</th>
