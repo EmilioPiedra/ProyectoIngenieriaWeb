@@ -33,7 +33,16 @@ body {
   font-style: justify;
   font-weight: 300;
 }
-
+.ventaja {
+  font-size: 16px;
+  font-style: justify;
+  font-weight: 300;
+}
+.ventaja h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 .tabla {
   width: 90%;
 }
@@ -52,7 +61,7 @@ body {
 
 .requisitos {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .requisitos h3 {
@@ -596,6 +605,7 @@ h1 {
   font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
   margin-bottom: 10px; /* Espaciado entre elementos de la lista */
 }
+
 .mi-div {
   background-color: #C5A76A;
   display: flex;
@@ -607,6 +617,7 @@ h1 {
 
 .mi-div img {
   width: auto;
-  height: 90%;
+  height: 80%;
+  justify-content: space-between;
   margin: 0 10px; /* Ajusta el margen entre las imágenes según tus necesidades */
 }
