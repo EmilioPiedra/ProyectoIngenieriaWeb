@@ -14,6 +14,11 @@ const userSchema = new Mongoose.Schema({
     cedula: { type: String, required: true },
     password: { type: String, required: true },
     fechaNacimiento: { type: Date, required: true },
+    role: {
+        type: String,
+        enum: ['user', 'admin'], // Define los roles permitidos
+        default: 'user', // Asigna un rol por defecto
+    },
 });
 
 userSchema.pre('save', function (next) {
@@ -24,6 +29,8 @@ userSchema.pre('save', function (next) {
                 next(err);
             } else {
                 document.password = hash;
+                // Asignar un rol por defecto si no se proporciona
+                document.role = document.role || 'user';
                 next();
             }
         });
@@ -42,7 +49,11 @@ userSchema.methods.comparePassword = async function (password, hash) {
 };
 
 userSchema.methods.createAccessToken = function () {
-    return generateAccessToken(getUserInfo(this));
+    // Incluir el campo de rol en el token de acceso
+    return generateAccessToken({
+        ...getUserInfo(this),
+        role: this.role,
+    });
 };
 
 userSchema.methods.createRefreshToken = async function () {

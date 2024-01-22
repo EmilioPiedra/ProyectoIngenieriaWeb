@@ -6,16 +6,9 @@ import { API_URL } from '../auth/constants';
 import { Carousel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { Bicycle } from '../types/types';
 
-// Definimos un tipo para representar la estructura de una bicicleta
-interface Bicycle {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    image: string;
-    // Añade otras propiedades según sea necesario
-}
+
 
 export default function ItemList() {
     const auth = useAuth();
@@ -40,8 +33,7 @@ export default function ItemList() {
         // Realiza la solicitud al servidor para obtener la lista de bicicletas
         const fetchBicycles = async () => {
             try {
-                const response = await axios.get<Bicycle[]>(`${API_URL}/bicycles`); // Especificamos el tipo Bicycle[]
-                setBicycles(response.data);
+                setBicycles(auth.currentBranch!.bicycles);
             } catch (error) {
                 console.error('Error al obtener bicicletas:', error);
             }
@@ -83,7 +75,7 @@ export default function ItemList() {
                         className="carousel-lg"
                     >
                         {bicycles.map((bicycle) => (
-                            <Carousel.Item key={bicycle.id}>
+                            <Carousel.Item key={bicycle._id}>
                                 <div className="d-flex justify-content-around">
                                     <div className="card" style={{ width: '35rem' }}>
                                         <div className="d-flex">
@@ -100,7 +92,7 @@ export default function ItemList() {
                                                 <button className="btn btn-flat btn-danger mb-2 mx-2" onClick={() => auth.addToCart(bicycle)}>
                                                     Agregar
                                                 </button>
-                                                <button className="btn btn-flat btn-danger mb-2 mx-2" onClick={() => auth.removeFromCart(bicycle.id)}>
+                                                <button className="btn btn-flat btn-danger mb-2 mx-2" onClick={() => auth.removeFromCart(bicycle._id)}>
                                                     Quitar
                                                 </button>
 

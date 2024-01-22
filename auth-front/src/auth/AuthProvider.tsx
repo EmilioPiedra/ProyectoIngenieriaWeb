@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from 'react';
-import type { AccessTokenResponse, AuthResponse, User, OrderDetails, Bicycle, CartItem } from "../types/types";
+import type { AccessTokenResponse, AuthResponse, User, OrderDetails, Bicycle, CartItem, Branch } from "../types/types";
 import { API_URL } from './constants';
 
 interface AuthProviderProps {
@@ -22,6 +22,12 @@ const AuthContext = createContext({
   getSelectedBicycle: () => ({} as Bicycle),
   saveCurrentLocation: (location: string) => { }, // Nueva función
   getCurrentLocation: () => undefined as string | undefined,
+  currentBranch: null as Branch | null,
+  setCurrentBranch: (value: Branch | null) => { },
+  branches: [] as Branch[],
+  setBranches: (value: Branch[]) => { },
+  getBranches: async () => { },
+  toPay: async (data: any) => { }
 });
 
 export function AuthProvider({ children }: AuthProviderProps) {
@@ -33,6 +39,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
   const [selectedBicycle, setSelectedBicycle] = useState<Bicycle | null>(null);
   const [currentLocation, setCurrentLocation] = useState<string | undefined>(undefined);
+  const [currentBranch, setCurrentBranch] = useState<Branch | null>(null);
+  const [branches, setBranches] = useState<Branch[]>([]);
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
@@ -44,6 +52,37 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const getCurrentLocation = () => {
     return currentLocation;
   };
+
+  const getBranches = async () => {
+    const response = await fetch(`${API_URL}/branch`);
+    const json = await response.json();
+    setBranches(json.body)
+  }
+
+  const toPay = async () => {
+    try {
+      for (let i = 0; i < cart.length; i++) {
+        await fetch(`${API_URL}/rental`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: user?.id,
+            pickUpLocation: orderDetails?.recogidaUbicacion,
+            returnLocation: orderDetails?.devolucionUbicacion,
+            pickUpDate: new Date(`${orderDetails!.recogidaFecha} ${orderDetails?.recogidaHora}`).toISOString(),
+            returnDate: new Date(`${orderDetails!.devolucionFecha} ${orderDetails?.devolucionHora}`).toISOString(),
+            bicycle: cart[i]._id
+          })
+        });
+      }
+      setCart([]);
+      setOrderDetails(null);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function requestNewAccessToken(refreshToken: string) {
     try {
@@ -155,35 +194,27 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return user;
   }
   function addToCart(bicycle: Bicycle) {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === bicycle.id);
-
-      if (existingItem) {
-        // Si el elemento ya existe, solo actualiza la cantidad
-        return prevCart.map((item) =>
-          item.id === bicycle.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      } else {
-        // Si el elemento no existe, agrégalo al carrito con cantidad 1
-        const updatedCart = [...prevCart, { ...bicycle, quantity: 1 }];
-        // Luego, guarda la bicicleta seleccionada
-        saveSelectedBicycle(bicycle);
-        return updatedCart;
-      }
-    });
+    if (cart.find((item) => item._id === bicycle._id)) {
+      setCart(cart.map((item) =>
+        item._id === bicycle._id ? { ...item, quantity: item.quantity + 1 } : item
+      ))
+    } else {
+      cart.push({ ...bicycle, quantity: 1 })
+      setCart([...cart])
+    }
   }
 
 
   function removeFromCart(id: string) {
     setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === id);
+      const existingItem = prevCart.find((item) => item._id === id);
 
       if (existingItem) {
         if (existingItem.quantity === 1) {
-          return prevCart.filter((item) => item.id !== id);
+          return prevCart.filter((item) => item._id !== id);
         } else {
           return prevCart.map((item) =>
-            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+            item._id === id ? { ...item, quantity: item.quantity - 1 } : item
           );
         }
       } else {
@@ -208,8 +239,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return selectedBicycle || ({} as Bicycle);
   }
 
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, getSelectedBicycle, saveCurrentLocation, getCurrentLocation, }}>
+    <AuthContext.Provider value={{
+      isAuthenticated, getAccessToken, saveUser, getRefreshToken, getUser, signOut, cart, addToCart, removeFromCart, saveOrderDetails, getOrderDetails, getSelectedBicycle, saveCurrentLocation, getCurrentLocation,
+      setCurrentBranch,
+      currentBranch,
+      branches,
+      setBranches,
+      getBranches,
+      toPay,
+    }}>
       {isLoading ? <div>cargando...</div> : children}
     </AuthContext.Provider>
   );

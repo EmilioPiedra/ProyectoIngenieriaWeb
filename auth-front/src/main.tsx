@@ -14,6 +14,7 @@ import OrderStatus from './rutas/OrderStatus';
 import LocationBike from './rutas/LocationBike';
 import PayMetod from './rutas/PayMetod';
 import UserInfo from './rutas/UserInfo';
+import AdminDashboard from './rutas/AdminDashboard';
 
 // Definir las rutas utilizando Remix
 const routes: RouteObject[] = [
@@ -54,7 +55,11 @@ const routes: RouteObject[] = [
       },
       {
         path: "/UserInfo",
-        element: <UserInfo />
+        element: <UserInfo />,
+      },
+      {
+        path: "/adminDashboard",
+        element: <AdminDashboard />,
       }
     ]
   },

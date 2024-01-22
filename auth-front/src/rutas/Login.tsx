@@ -33,10 +33,10 @@ export default function Login() {
                 console.log("Usuario autenticado correctamente");
                 setErrorResponse("");
                 const json = (await response.json()) as AuthResponse;
-                console.log(json);
+
                 if (json.body.accessToken && json.body.refreshToken) {
                     auth.saveUser(json);
-                    goTo("/dashboard")
+                    goTo(json.body.user.role === "admin" ? "/adminDashboard" : "/dashboard");
                 }
 
             } else {
@@ -51,7 +51,16 @@ export default function Login() {
     }
 
     if (auth.isAuthenticated) {
-        return <Navigate to="/dashboard" />;
+        // Ya está autenticado, entonces redirigimos según el rol
+        const userRole = auth.getUser()?.role;
+        console.log("Rol del usuario:", userRole);
+
+        if (userRole === 'admin') {
+            return <Navigate to="/adminDashboard" />;
+        }
+        if (userRole !== "admin") {
+            return <Navigate to="/dashboard" />;
+        }
     }
 
     return (

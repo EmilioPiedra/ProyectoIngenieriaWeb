@@ -15,8 +15,10 @@ export interface AuthResponseError {
 
 export interface User {
     _id: string;
+    id: string;
     name: string;
     username: string;
+    role: string; // Agrega la propiedad 'role'
 }
 
 export interface AccessTokenResponse {
@@ -37,7 +39,7 @@ export interface OrderDetails {
 }
 
 export interface Bicycle {
-    id: string;
+    _id: string;
     name: string;
     description: string;
     price: number;
@@ -46,6 +48,18 @@ export interface Bicycle {
 }
 
 export interface CartItem {
-    id: string;
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
     quantity: number;
+}
+
+export interface Branch {
+    _id: string
+    name: string
+    lat: number
+    lon: number
+    bicycles: Bicycle[]
 }

@@ -12,7 +12,6 @@ export default function OrderStatus() {
         navigate(previousLocation || '/Dashboard');
     };
     const orderDetails = auth.getOrderDetails();
-    const selectedBicycle = auth.getSelectedBicycle();
 
     return (
         <PortalLayout>
@@ -32,7 +31,7 @@ export default function OrderStatus() {
                     <div className="order-details">
                         <div className="order-detail">
                             <p>Recogida Ubicación:</p>
-                            <p>{orderDetails.recogidaUbicacion}</p>
+                            <p>{auth.branches.find(x => x._id === orderDetails.recogidaUbicacion)?.name}</p>
                         </div>
                         <div className="order-detail">
                             <p>Recogida Fecha:</p>
@@ -45,7 +44,7 @@ export default function OrderStatus() {
 
                         <div className="order-detail">
                             <p>Devolución Ubicación:</p>
-                            <p>{orderDetails.devolucionUbicacion}</p>
+                            <p>{auth.branches.find(x => x._id === orderDetails.devolucionUbicacion)?.name}</p>
                         </div>
                         <div className="order-detail">
                             <p>Devolución Fecha:</p>
@@ -58,20 +57,20 @@ export default function OrderStatus() {
                     </div>
 
                     {/* Mostrar la bicicleta seleccionada si existe */}
-                    {selectedBicycle && (
-                        <div className="bicycle-details">
+                    {auth.cart.map((x) =>
+                        <div key={x._id} className="bicycle-details">
                             <div className="bicycle-detail">
                                 <p><b>Bicicleta seleccionada:</b></p>
-                                <p>{selectedBicycle.description}</p>
+                                <p>{x.description}</p>
                             </div>
                             <div className="bicycle-detail">
                                 <p><b>Precio:</b></p>
-                                <p>${selectedBicycle.price}</p>
+                                <p>${x.price}</p>
                             </div>
                             <img
-                                src={selectedBicycle.image}
+                                src={x.image}
                                 className="bicycle-img"
-                                alt={selectedBicycle.name}
+                                alt={x.name}
                                 style={{ objectFit: 'cover', height: '200px' }}
                             />
                         </div>

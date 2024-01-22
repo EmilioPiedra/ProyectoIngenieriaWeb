@@ -21,8 +21,11 @@ export default function PayMetod() {
         navigate('/ItemList');
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         console.log('Información del pago:', { cardNumber, expirationDate, cvv });
+        await auth.toPay({});
+        alert('Pago realizado con exito!');
+        navigate('/dashboard')
         // También puedes realizar otras acciones, como cambiar el estado para indicar que el pago se ha realizado con éxito.
     };
     const orderDetails = auth.getOrderDetails();
@@ -50,7 +53,7 @@ export default function PayMetod() {
                                 <div className="order-details">
                                     <div className="order-detail">
                                         <p>Recogida Ubicación:</p>
-                                        <p>{orderDetails.recogidaUbicacion}</p>
+                                        <p>{auth.branches.find(x => x._id === orderDetails.recogidaUbicacion)?.name}</p>
                                     </div>
                                     <div className="order-detail">
                                         <p>Recogida Fecha:</p>
@@ -63,7 +66,7 @@ export default function PayMetod() {
 
                                     <div className="order-detail">
                                         <p>Devolución Ubicación:</p>
-                                        <p>{orderDetails.devolucionUbicacion}</p>
+                                        <p>{auth.branches.find(x => x._id === orderDetails.devolucionUbicacion)?.name}</p>
                                     </div>
                                     <div className="order-detail">
                                         <p>Devolución Fecha:</p>
@@ -76,20 +79,20 @@ export default function PayMetod() {
                                 </div>
 
                                 {/* Mostrar la bicicleta seleccionada si existe */}
-                                {selectedBicycle && (
-                                    <div className="bicycle-details">
+                                {auth.cart.map((x) =>
+                                    <div key={x._id} className="bicycle-details">
                                         <div className="bicycle-detail">
                                             <p><b>Bicicleta seleccionada:</b></p>
-                                            <p>{selectedBicycle.description}</p>
+                                            <p>{x.description}</p>
                                         </div>
                                         <div className="bicycle-detail">
                                             <p><b>Precio:</b></p>
-                                            <p>${selectedBicycle.price}</p>
+                                            <p>${x.price}</p>
                                         </div>
                                         <img
-                                            src={selectedBicycle.image}
+                                            src={x.image}
                                             className="bicycle-img"
-                                            alt={selectedBicycle.name}
+                                            alt={x.name}
                                             style={{ objectFit: 'cover', height: '300px' }}
                                         />
                                     </div>

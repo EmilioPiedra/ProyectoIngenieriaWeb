@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { Branch } from '../types/types';
+import { API_URL } from '../auth/constants';
 
 export default function LocationBike() {
   const auth = useAuth();
@@ -14,6 +16,12 @@ export default function LocationBike() {
   const [devolucionFecha, setDevolucionFecha] = useState('');
   const [devolucionHora, setDevolucionHora] = useState('');
   const location = useLocation();
+  const [branches, setBranches] = useState<Branch[]>([]);
+
+  useEffect(() => {
+    getBranches();
+  }, []);
+
 
   const handleClick1 = () => {
     const currentLocation = '/Dashboard';
@@ -22,10 +30,16 @@ export default function LocationBike() {
 
   };
 
+  const getBranches = async () => {
+    const response = await fetch(`${API_URL}/branch`);
+    const json = await response.json();
+    setBranches(json.body)
+  }
+
   const handleClick2 = () => {
     const currentLocation = '/ItemList';
     auth.saveOrderDetails({
-      recogidaUbicacion,
+      recogidaUbicacion: auth.currentBranch!._id,
       recogidaFecha,
       recogidaHora,
       devolucionUbicacion,
@@ -47,7 +61,7 @@ export default function LocationBike() {
               </button>
             </div>
             <div className="col-6 d-flex justify-content-end">
-              <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2}>
+              <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2} disabled={!recogidaFecha || !recogidaHora || !devolucionUbicacion || !devolucionFecha || !devolucionHora}>
                 Continuar
               </button>
             </div>
@@ -63,11 +77,7 @@ export default function LocationBike() {
               <div className="column">
                 <div>
                   <label>Ubicación de Recogida:</label>
-                  <input
-                    type="text"
-                    value={recogidaUbicacion}
-                    onChange={(e) => setRecogidaUbicacion(e.target.value)}
-                  />
+                  <input type="text" readOnly value={auth.currentBranch?.name} />
                 </div>
                 <div>
                   <label>Fecha de Recogida:</label>
@@ -89,11 +99,10 @@ export default function LocationBike() {
               <div className="column">
                 <div>
                   <label>Ubicación de Devolución:</label>
-                  <input
-                    type="text"
-                    value={devolucionUbicacion}
-                    onChange={(e) => setDevolucionUbicacion(e.target.value)}
-                  />
+                  <select onChange={(x) => setDevolucionUbicacion(x.target.value)}>
+                    <option value="">Seleccione una opción</option>
+                    {branches.map(x => <option key={x._id} value={x._id} >{x.name}</option>)}
+                  </select>
                 </div>
                 <div>
                   <label>Fecha de Devolución:</label>

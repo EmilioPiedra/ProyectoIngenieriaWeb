@@ -33,16 +33,19 @@ body {
   font-style: justify;
   font-weight: 300;
 }
+
 .ventaja {
   font-size: 16px;
   font-style: justify;
   font-weight: 300;
 }
+
 .ventaja h3 {
   font-size: 35px;
   font-weight: bold;
   margin-bottom: 10px;
 }
+
 .tabla {
   width: 90%;
 }
@@ -123,6 +126,16 @@ body {
 
 
 input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #282828;
+  color: #ffffff;
+  /* Cambia el color del texto según tu diseño */
+  border-radius: 8px;
+}
+
+select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -265,9 +278,12 @@ button {
 }
 
 .frase {
-  font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
-  line-height: 1.5; /* Ajusta la altura de línea para mejorar la legibilidad */
-  color: #ffffff; /* Cambia el color del texto si es necesario */
+  font-size: 20px;
+  /* Ajusta el tamaño del texto según tus preferencias */
+  line-height: 1.5;
+  /* Ajusta la altura de línea para mejorar la legibilidad */
+  color: #ffffff;
+  /* Cambia el color del texto si es necesario */
   text-align: justify;
 
 }
@@ -403,6 +419,7 @@ label {
   margin: 0 auto;
 
 }
+
 /* order estatus */
 .order-status-container {
   background-color: #ffffff;
@@ -445,11 +462,13 @@ label {
   text-align: left;
   /* Alinear la respuesta a la izquierda */
 }
-.orderfototer{
+
+.orderfototer {
   background: #000000;
   color: #FFF;
   text-align: center;
 }
+
 /* fin order estatus */
 /* css de UserInfo */
 .user-info-container {
@@ -547,12 +566,16 @@ h1 {
 
 /* Estilos para el cuadro de direcciones */
 .address-list-container {
-  width: 450px; /* Ajusta el ancho según sea necesario */
-  height: 400px; /* Ajusta la altura según sea necesario */
+  width: 450px;
+  /* Ajusta el ancho según sea necesario */
+  height: 200px;
+  /* Ajusta la altura según sea necesario */
+  max-height: 400px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
-  margin: 20px auto; /* Centra el cuadro */
+  margin: 20px auto;
+  /* Centra el cuadro */
   border-radius: 5px;
 }
 
@@ -575,7 +598,8 @@ h1 {
 /* Estilos para el mapa */
 .map-container {
   /* height: 400px; Ajusta la altura según sea necesario */
-  margin: 20px auto; /* Centra el mapa */
+  margin: 20px auto;
+  /* Centra el mapa */
   width: 730px;
   height: 340px;
 }
@@ -584,12 +608,14 @@ h1 {
 #regresarButton {
   margin-top: 20px;
   background-color: #C5A76A;
-  
+
 }
+
 #continuarButton {
   margin-top: 20px;
   background-color: #C5A76A
 }
+
 /* Estilos para el pie de página */
 #footersing {
   text-align: center;
@@ -598,17 +624,22 @@ h1 {
 
 
 .requisitos {
-  font-size: 16px; /* Ajusta el tamaño del texto según tus preferencias */
+  font-size: 16px;
+  /* Ajusta el tamaño del texto según tus preferencias */
 }
 
 .requisitos ul {
-  list-style-type: none; /* Elimina los estilos de viñetas predeterminados */
-  padding: 0; /* Elimina el relleno predeterminado de la lista */
+  list-style-type: none;
+  /* Elimina los estilos de viñetas predeterminados */
+  padding: 0;
+  /* Elimina el relleno predeterminado de la lista */
 }
 
 .requisitos li {
-  font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
-  margin-bottom: 10px; /* Espaciado entre elementos de la lista */
+  font-size: 20px;
+  /* Ajusta el tamaño del texto según tus preferencias */
+  margin-bottom: 10px;
+  /* Espaciado entre elementos de la lista */
 }
 
 .mi-div {
@@ -624,7 +655,8 @@ h1 {
   width: auto;
   height: 80%;
   justify-content: space-between;
-  margin: 0 10px; /* Ajusta el margen entre las imágenes según tus necesidades */
+  margin: 0 10px;
+  /* Ajusta el margen entre las imágenes según tus necesidades */
 }
 
 /* dashoard color de la lista de direcciones */
@@ -632,13 +664,15 @@ h1 {
   background: #282828;
   color: #FFF;
 }
+
+.address-list-selected {
+  border: 3px solid #BE0F30;
+}
+
 .address-list-container {
   background-color: #FFF;
 }
+
 body {
   background-color: black;
 }
-
-
-
-
