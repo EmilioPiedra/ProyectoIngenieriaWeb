@@ -41,6 +41,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [currentLocation, setCurrentLocation] = useState<string | undefined>(undefined);
   const [currentBranch, setCurrentBranch] = useState<Branch | null>(null);
   const [branches, setBranches] = useState<Branch[]>([]);
+  const [errorResponse, setErrorResponse] = useState("");
+
   //const [refreshToken, setRefreshToken] = useState<string>("");
 
   useEffect(() => { checkAuth(); }, []);
@@ -54,10 +56,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const getBranches = async () => {
-    const response = await fetch(`${API_URL}/branch`);
-    const json = await response.json();
-    setBranches(json.body)
-  }
+    try {
+      const response = await fetch(`${API_URL}/branch `);
+      if (response.ok) {
+        const data = await response.json();
+        setBranches(data);
+      } else {
+        const errorMessage = await response.json();
+        setErrorResponse(`Error al obtener direciones: ${errorMessage.error}`);
+      }
+    } catch (error) {
+      console.error('Error al obtener bicicletas:', error);
+      setErrorResponse("Error interno al obtener direciones");
+    }
+  };
 
   const toPay = async () => {
     try {

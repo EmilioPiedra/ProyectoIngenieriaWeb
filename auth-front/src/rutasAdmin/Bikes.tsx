@@ -2,7 +2,7 @@ import { useAuth } from '../auth/AuthProvider';
 import AdminLayout from '../layout/AdminLayout';
 import { API_URL } from '../auth/constants';
 import { useState, useEffect } from 'react';
-import { ErrorResponse, useNavigate } from "react-router-dom";
+import { ErrorResponse, Outlet, useNavigate } from "react-router-dom";
 import { AuthResponseError, Bicycle } from '../types/types';
 import { Carousel } from 'react-bootstrap';
 
@@ -16,7 +16,10 @@ export default function Bikes() {
     const [errorResponse, setErrorResponse] = useState("");
     const [editBikeId, setEditBikeId] = useState<string | undefined>(undefined);
     const auth = useAuth();
-    const navigate = useNavigate();
+
+    if (auth.getUser()?.role !== 'admin') {
+        return <><p>No tienes permisos para acceder a esta sección</p><Outlet /></>;
+    }
 
     const fetchBicycles = async () => {
         try {

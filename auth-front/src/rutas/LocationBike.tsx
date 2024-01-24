@@ -16,11 +16,13 @@ export default function LocationBike() {
   const [devolucionFecha, setDevolucionFecha] = useState('');
   const [devolucionHora, setDevolucionHora] = useState('');
   const location = useLocation();
-  const [branches, setBranches] = useState<Branch[]>([]);
+  const { branches, setBranches } = auth
 
   useEffect(() => {
-    getBranches();
-  }, []);
+    auth.getBranches()
+    console.log(auth.getUser());
+
+  }, [])
 
 
   const handleClick1 = () => {
@@ -30,11 +32,7 @@ export default function LocationBike() {
 
   };
 
-  const getBranches = async () => {
-    const response = await fetch(`${API_URL}/branch`);
-    const json = await response.json();
-    setBranches(json.body)
-  }
+
 
   const handleClick2 = () => {
     const currentLocation = '/ItemList';

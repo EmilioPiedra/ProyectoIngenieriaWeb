@@ -1,21 +1,119 @@
 const express = require('express');
 const { jsonResponse } = require('../lib/jsonResponse');
-const branch = require('../schema/branch');
+const Branch = require('../schema/branch');
+const Bicycle = require('../schema/bicycle');
 const router = express.Router();
 const authenticate = require('../auth/authenticate');
 
+// Obtener todas las direcciones
 router.get('/', async (req, res) => {
-    console.log(req.user);
-    res.status(200).json(jsonResponse(200, await branch.find().populate('bicycles')));
+    try {
+        const branches = await Branch.find().populate('bicycles');
+        res.status(200).json(branches);
+    } catch (error) {
+        console.error("Error al obtener direcciones:", error.message);
+        res.status(500).json({ error: "Error interno al obtener direcciones" });
+    }
 });
 
-router.post('/', async (req, res) => {
+// Función para enviar respuestas JSON con código de estado y mensaje de error
+function sendErrorResponse(res, status, errorMessage) {
+    res.status(status).json({ error: errorMessage });
+}
+
+// Crear una nueva dirección con bicicletas
+router.post('/', authenticate, async (req, res) => {
     try {
-        const created = await branch.create(req.body);
-        res.status(200).json(jsonResponse(200, created));
+        const { name, lat, lon, bicycles } = req.body;
+
+        // Validar campos
+        if (!name || !lat || !lon) {
+            return sendErrorResponse(res, 400, "Nombre, latitud y longitud son campos obligatorios.");
+        }
+
+        // Crear la dirección
+        const createdBranch = await Branch.create({ name, lat, lon, bicycles: [] });
+
+        // Agregar las bicicletas a la dirección
+        if (bicycles && bicycles.length > 0) {
+            const createdBicycles = await Bicycle.create(bicycles);
+            createdBranch.bicycles = createdBicycles.map(bike => bike._id);
+            await createdBranch.save();
+        }
+
+        res.status(200).json(jsonResponse(200, createdBranch));
     } catch (error) {
-        res.status(400).json(error)
+        console.error("Error al crear dirección:", error.message);
+        sendErrorResponse(res, 400, "Error al crear dirección");
     }
-})
+});
+
+// Actualizar una dirección
+router.put('/:id', authenticate, async (req, res) => {
+    try {
+        const { name, lat, lon, bicycles } = req.body;
+
+        // Validar campos
+        if (!name || !lat || !lon) {
+            return sendErrorResponse(res, 400, "Nombre, latitud y longitud son campos obligatorios.");
+        }
+
+        // Actualizar la dirección
+        const updatedBranch = await Branch.findByIdAndUpdate(
+            req.params.id,
+            { name, lat, lon },
+            { new: true }
+        );
+
+        // Eliminar las bicicletas existentes solo si se proporcionan nuevas bicicletas
+        if (bicycles && bicycles.length > 0) {
+            if (updatedBranch.bicycles.length > 0) {
+                await Bicycle.deleteMany({ _id: { $in: updatedBranch.bicycles } });
+                updatedBranch.bicycles = [];
+            }
+
+            // Agregar las nuevas bicicletas
+            const createdBicycles = await Bicycle.create(bicycles);
+            updatedBranch.bicycles = createdBicycles.map(bike => bike._id);
+            await updatedBranch.save();
+        }
+
+        res.status(200).json(jsonResponse(200, updatedBranch));
+    } catch (error) {
+        console.error("Error al actualizar dirección:", error.message);
+        sendErrorResponse(res, 400, "Error al actualizar dirección");
+    }
+});
+
+// Obtener una dirección por ID
+router.get('/:id', async (req, res) => {
+    try {
+        const branch = await Branch.findById(req.params.id).populate('bicycles');
+        if (!branch) {
+            return res.status(404).json({ error: "Dirección no encontrada" });
+        }
+        res.status(200).json(branch);
+    } catch (error) {
+        console.error("Error al obtener dirección por ID:", error.message);
+        res.status(500).json({ error: "Error interno al obtener dirección por ID" });
+    }
+});
+
+
+// Eliminar una dirección
+router.delete('/:id', authenticate, async (req, res) => {
+    try {
+        // Eliminar la dirección y las bicicletas asociadas
+        const deletedBranch = await Branch.findByIdAndDelete(req.params.id);
+        if (deletedBranch.bicycles.length > 0) {
+            await Bicycle.deleteMany({ _id: { $in: deletedBranch.bicycles } });
+        }
+
+        res.status(200).json(jsonResponse(200, deletedBranch));
+    } catch (error) {
+        console.error("Error al eliminar dirección:", error.message);
+        res.status(500).json({ error: "Error interno al eliminar dirección" });
+    }
+});
 
 module.exports = router;

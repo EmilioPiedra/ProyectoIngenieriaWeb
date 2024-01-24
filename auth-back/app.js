@@ -4,9 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const authenticate = require('../auth-back/auth/authenticate');
 const Bicycle = require('./schema/bicycle'); // Ajusta la ruta según tu estructura de carpetas
-const bicyclesData = require('./auth/bicyclesData'); // Importa el arreglo
 const BranchModel = require('./schema/branch');
-const branchesData = require('./auth/branchesData')
 
 require('dotenv').config();
 
@@ -30,7 +28,7 @@ app.use('/api/user', authenticate, require('./routes/users'));
 app.use('/api/todos', authenticate, require('./routes/todos'));
 app.use('/api/refresh-token', require('./routes/refreshToken'));
 app.use('/api/signout', require('./routes/signout'));
-app.use('/api/branch', authenticate, require('./routes/branch'));
+app.use('/api/branch', require('./routes/branch'));
 app.use('/api/rental', authenticate, require('./routes/rental'));
 
 

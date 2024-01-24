@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../auth/AuthProvider';
 import PortalLayout from '../layout/PortalLayout';
-import axios from 'axios';
-import { API_URL } from '../auth/constants';
 import { Carousel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -12,7 +10,7 @@ import { Bicycle } from '../types/types';
 
 export default function ItemList() {
     const auth = useAuth();
-    const [bicycles, setBicycles] = useState<Bicycle[]>([]); // Especificamos el tipo Bicycle[]
+    const [bicycles, setBicycles] = useState<Bicycle[]>([]);
     const [activeIndex, setActiveIndex] = useState(0);
     const navigate = useNavigate();
     const location = useLocation();
