@@ -676,3 +676,33 @@ h1 {
 body {
   background-color: black;
 }
+
+/* estilo del admin de bikes */
+
+.fondo-negro {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Target all buttons within the form */
+form button {
+  background-color: red;
+  color: white;
+  margin-right: 1%;
+}
+
+/* Target the "Editar" and "Eliminar" buttons specifically */
+.Carousel .text-white div button {
+  background-color: red;
+  color: white;
+}
+.Carousel .text-white div button {
+  background-color: red;
+  color: white;
+}
+
+
+
+
+/* estilo del admin de bikes */
