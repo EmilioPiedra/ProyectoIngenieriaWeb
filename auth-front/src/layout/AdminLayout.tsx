@@ -43,6 +43,11 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                                 BikeRental
                             </h1>
                         </div>
+                        <Link to="/adminBikes" className="nav-link">
+                            <h1 className="name" style={{ display: "inline", color: "black" }}>
+                                AdminBikes
+                            </h1>
+                        </Link>
                         <div className="d-flex align-items-center">
                             {auth.getUser()?.name}
                             <li>

@@ -8,6 +8,7 @@ export interface AuthResponse {
 }
 
 export interface AuthResponseError {
+    error: string;
     body: {
         error: string;
     }
@@ -44,8 +45,9 @@ export interface Bicycle {
     description: string;
     price: number;
     image: string;
-    // Añade otras propiedades según sea necesario
+    status?: 'disponible' | 'ocupado'; // Agrega el campo 'status' como opcional
 }
+
 
 export interface CartItem {
     _id: string;
