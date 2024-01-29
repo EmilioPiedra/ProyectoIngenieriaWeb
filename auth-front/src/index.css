@@ -96,6 +96,8 @@ body {
   font-weight: bold;
 }
 
+
+
 /* home */
 
 
@@ -705,6 +707,8 @@ form button {
 }
 
 
-
+.tabla, .tabla th, .tabla td {
+  border: 1px solid #C5A76A; /* Aplica el color de borde a la tabla y a las celdas */
+}
 
 /* estilo del admin de bikes */
