@@ -8,6 +8,7 @@ body {
 
 /* home */
 .titulo {
+  text-align: left;
   font-size: 30px;
   margin-bottom: 20px;
   font-weight: bold;
@@ -713,3 +714,19 @@ form button {
 }
 
 /* estilo del admin de bikes */
+.bloque-sansebastian{
+  display: flex;
+  height: 250px;
+  width: 250px;
+  justify-content: flex-start;
+}
+.bloque-bolivar{
+  display: flex;
+  height: 250px;
+  width: 250px;
+}
+.bloque-jipiro{
+  display: flex;
+  height: 250px;
+  width: 250px;
+}

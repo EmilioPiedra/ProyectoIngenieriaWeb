@@ -5,6 +5,9 @@ import imagenbici from '../imagenes/imagenportaderecha.png';
 import '../App.css';
 import imagen1 from '../imagenes/nodo.png';
 import imagen2 from '../imagenes/QUOHUB.png';
+import imagenparquesansebastian from '../imagenes/imagenparquesansebastian.jpg';
+import imagenparquebolivar from '../imagenes/imagenparquebolivar.jpg';
+import imagenparquejipiro from '../imagenes/imagenparquejipiro.jpg';
 export default function Home() {
   return <>
     <DefaultLayout>
@@ -14,9 +17,9 @@ export default function Home() {
      
         <div className="row">
           <div className="col-md-6">
-          <p className="introduccion">
+           <p className="introduccion">
           Renta una bici y <span className="destacado">#QueNadaTeDetenga</span>
-        </p>
+           </p>
             {/* Texto a la izquierda */}
             <p className='ventaja'>
               BikeRenta te ofrece servicio de alquiler de bicicletas para montaña, ruta y/o ciclo paseo en la modalidad que prefieras para disfrutar del ciclismo sin preocupaciones.
@@ -75,12 +78,12 @@ export default function Home() {
             </div>
             <p className='ventaja'>
             <h3>Ventajas de utilizar bicicleta:</h3>
-            <ol>
-  <li><strong>Salud Cardiovascular:</strong> Andar en bicicleta mejora la salud cardiovascular al fortalecer el corazón y mejorar la circulación sanguínea, reduciendo el riesgo de enfermedades cardíacas.</li><br></br>
-  <li><strong>Ejercicio de Bajo Impacto:</strong> Es una forma de ejercicio de bajo impacto que disminuye la presión sobre las articulaciones, siendo amigable para personas de todas las edades y niveles de condición física.</li><br></br>
-  <li><strong>Sostenibilidad Ambiental:</strong> Contribuye a la sostenibilidad ambiental al ser una forma de transporte libre de emisiones, reduciendo la contaminación del aire y disminuyendo la huella de carbono.</li><br></br>
-  <li><strong>Bienestar Mental:</strong> Andar en bicicleta libera endorfinas, mejorando el estado de ánimo y reduciendo el estrés, la ansiedad y la depresión.</li><br></br>
-</ol>
+             <ol>
+               <li><strong>Salud Cardiovascular:</strong> Andar en bicicleta mejora la salud cardiovascular al fortalecer el corazón y mejorar la circulación sanguínea, reduciendo el riesgo de enfermedades cardíacas.</li><br></br>
+                <li><strong>Ejercicio de Bajo Impacto:</strong> Es una forma de ejercicio de bajo impacto que disminuye la presión sobre las articulaciones, siendo amigable para personas de todas las edades y niveles de condición física.</li><br></br>
+                <li><strong>Sostenibilidad Ambiental:</strong> Contribuye a la sostenibilidad ambiental al ser una forma de transporte libre de emisiones, reduciendo la contaminación del aire y disminuyendo la huella de carbono.</li><br></br>
+                <li><strong>Bienestar Mental:</strong> Andar en bicicleta libera endorfinas, mejorando el estado de ánimo y reduciendo el estrés, la ansiedad y la depresión.</li><br></br>
+              </ol>
               
             </p>
           </div>
@@ -107,10 +110,38 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div>
+          <h2>Lugares de los anclajes Loja</h2>
+        </div>
+        <div>
+          <div className='bloque-sansebastian'>
+            <img src={imagenparquesansebastian} alt="imagen parque San Sebastian" />
+            <p>
+              <h2>Parque San sebastian</h2>
+              <p>Sin duda, es uno de los elementos más atractivos de Loja. En el centro de esta plaza se levanta una torre de 32 metros de altura, en cuya cumbre se encuentra un reloj de cuatro esferas y en su base encontramos cuatro relieves que indican los hechos más sobresalientes en la historia de Loja.</p>
+            </p>
+          </div>
+          <div className='bloque-bolivar'>
+            <img src={imagenparquebolivar} alt="imagen parque Bolivar" />
+            <p>
+              <h2>Parque Bolivar</h2>
+              <p>Un pequeño espacio que se abre para marcar la entrada hacia el centro desde la Avenida Universitaria, el parque Simón Bolívar es perfecto para pasear y dispersarse sin tener que alejarse mucho del centro. Es una pequeña plaza rodeada por la Iglesia y Convento de los Franciscanos.</p>
+            </p>
+          </div>
+          <div className='bloque-jipiro'>
+            <img src={imagenparquejipiro} alt="imagen parque Jipiro" />
+            <p>
+              <h2>Parque Jipiro</h2>
+              <p>Está compuesto por más de 10 hectáreas, al realizar un recorrido por el lugar podrás encontrar varios atractivos y mucho por hacer. Una de sus principales características es su entorno natural, un lugar apto para descansar. Rodeado por los ríos Zamora y Jipiro.</p>
+            </p>
+          </div>
+        </div>
       </div>
       <div className="mi-div">
       <img src={imagen1} alt="Imagen 1" />
       <img src={imagen2} alt="Imagen 2" />
+
+
     </div>
       <footer id='footerhome'>
   <div className="text-center">
