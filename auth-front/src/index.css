@@ -36,7 +36,7 @@ body {
 
 .ventaja {
   font-size: 16px;
-  font-style: justify;
+  text-align: justify; /* Corrige esta línea */
   font-weight: 300;
 }
 
@@ -63,8 +63,9 @@ body {
 }
 
 .requisitos {
-  width: 100%;
-  margin-top: 16px;
+  font-size: 16px;
+  text-align: justify; /* Corrige esta línea */
+  font-weight: 300;
 }
 
 .requisitos h3 {
@@ -608,8 +609,9 @@ h1 {
 #regresarButton {
   margin-top: 20px;
   background-color: #C5A76A;
-
+  float: right; /* Añade esta línea */
 }
+
 
 #continuarButton {
   margin-top: 20px;

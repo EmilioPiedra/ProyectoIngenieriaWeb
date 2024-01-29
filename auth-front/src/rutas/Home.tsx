@@ -82,11 +82,11 @@ export default function Home() {
             <div className="requisitos">
               <h3>Requisitos:</h3>
               <ol>
-                <li>-Ser mayor de edad</li>
-                <li>-Recepción de datos personales y firma</li>
-                <li>-Documento cédula y licencia de conducir *Entregar en la tienda</li>
-                <li>-Para uso entrega de garantía obligatoria reembolsable</li>
-                <li>-Contrato (Leer)</li>
+                <li>Ser mayor de edad</li>
+                <li>Recepción de datos personales y firma</li>
+                <li>Documento cédula y licencia de conducir *Entregar en la tienda</li>
+                <li>Para uso entrega de garantía obligatoria reembolsable</li>
+                <li>Contrato (Leer)</li>
               </ol>
             </div>
           </div>

@@ -54,7 +54,7 @@ export default function Dashboard() {
 
       <div className="container">
         <div className="row">
-          <div className="col-6">
+        <div className="d-flex justify-content-end">
             <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick} disabled={!auth.currentBranch}>
               Continuar
             </button>
