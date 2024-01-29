@@ -1,6 +1,7 @@
 import DefaultLayout from '../layout/DefaultLayout';
 import imagen from '../imagenes/imagenportada.jpg';
 import imagenrequisito from '../imagenes/imagenrequsito.jpg';
+import imagenbici from '../imagenes/imagenportaderecha.png';
 import '../App.css';
 import imagen1 from '../imagenes/nodo.png';
 import imagen2 from '../imagenes/QUOHUB.png';
@@ -32,8 +33,11 @@ export default function Home() {
               
             </p>
           </div>
-          
+         
           <div className="col-md-6">
+          <div className="imagen-requisitos">
+              <img src={imagenbici} alt="Imagen de requisitos" />
+            </div>
           <h3>Resumen Bicicletas:</h3>
             <table className="tabla mb-4">
             
