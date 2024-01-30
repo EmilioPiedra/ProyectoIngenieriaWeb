@@ -32,14 +32,7 @@ router.post('/', authenticate, async (req, res) => {
         }
 
         // Crear la dirección
-        const createdBranch = await Branch.create({ name, lat, lon, bicycles: [] });
-
-        // Agregar las bicicletas a la dirección
-        if (bicycles && bicycles.length > 0) {
-            const createdBicycles = await Bicycle.create(bicycles);
-            createdBranch.bicycles = createdBicycles.map(bike => bike._id);
-            await createdBranch.save();
-        }
+        const createdBranch = await Branch.create({ name, lat, lon, bicycles: bicycles || [] });
 
         res.status(200).json(jsonResponse(200, createdBranch));
     } catch (error) {
@@ -48,7 +41,6 @@ router.post('/', authenticate, async (req, res) => {
     }
 });
 
-// Actualizar una dirección
 router.put('/:id', authenticate, async (req, res) => {
     try {
         const { name, lat, lon, bicycles } = req.body;
@@ -61,22 +53,9 @@ router.put('/:id', authenticate, async (req, res) => {
         // Actualizar la dirección
         const updatedBranch = await Branch.findByIdAndUpdate(
             req.params.id,
-            { name, lat, lon },
+            { name, lat, lon, bicycles: bicycles || [] },
             { new: true }
         );
-
-        // Eliminar las bicicletas existentes solo si se proporcionan nuevas bicicletas
-        if (bicycles && bicycles.length > 0) {
-            if (updatedBranch.bicycles.length > 0) {
-                await Bicycle.deleteMany({ _id: { $in: updatedBranch.bicycles } });
-                updatedBranch.bicycles = [];
-            }
-
-            // Agregar las nuevas bicicletas
-            const createdBicycles = await Bicycle.create(bicycles);
-            updatedBranch.bicycles = createdBicycles.map(bike => bike._id);
-            await updatedBranch.save();
-        }
 
         res.status(200).json(jsonResponse(200, updatedBranch));
     } catch (error) {
@@ -84,6 +63,8 @@ router.put('/:id', authenticate, async (req, res) => {
         sendErrorResponse(res, 400, "Error al actualizar dirección");
     }
 });
+
+
 
 // Obtener una dirección por ID
 router.get('/:id', async (req, res) => {

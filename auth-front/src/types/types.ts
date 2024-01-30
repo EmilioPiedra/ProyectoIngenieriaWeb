@@ -40,12 +40,13 @@ export interface OrderDetails {
 }
 
 export interface Bicycle {
+    selected: boolean | undefined;
     _id: string;
     name: string;
     description: string;
     price: number;
     image: string;
-    status?: 'disponible' | 'ocupado'; // Agrega el campo 'status' como opcional
+    status?: 'disponible' | 'ocupado';
 }
 
 
