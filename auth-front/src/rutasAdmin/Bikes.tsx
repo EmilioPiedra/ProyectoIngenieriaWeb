@@ -2,9 +2,9 @@ import { useAuth } from '../auth/AuthProvider';
 import AdminLayout from '../layout/AdminLayout';
 import { API_URL } from '../auth/constants';
 import { useState, useEffect } from 'react';
-import { ErrorResponse, Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { AuthResponseError, Bicycle } from '../types/types';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Col, Row, Form, Button, ListGroup } from 'react-bootstrap'
 
 export default function Bikes() {
     const [bikes, setBikes] = useState<Bicycle[]>([]);
@@ -17,9 +17,9 @@ export default function Bikes() {
     const [editBikeId, setEditBikeId] = useState<string | undefined>(undefined);
     const auth = useAuth();
 
-    if (auth.getUser()?.role !== 'admin') {
-        return <><p>No tienes permisos para acceder a esta sección</p><Outlet /></>;
-    }
+    useEffect(() => {
+        fetchBicycles();
+    }, []);
 
     const fetchBicycles = async () => {
         try {
@@ -36,10 +36,6 @@ export default function Bikes() {
             setErrorResponse("Error interno al obtener bicicletas");
         }
     };
-
-    useEffect(() => {
-        fetchBicycles();
-    }, []);
 
     const handleEdit = (bikeId: string) => {
         const bikeToEdit = bikes.find((bike) => bike._id === bikeId);
@@ -126,56 +122,67 @@ export default function Bikes() {
 
     return (
         <AdminLayout>
-            <div className="fondo-negro">
-                <h1>Bikes</h1>
-                <form onSubmit={(e) => { e.preventDefault(); handleCreateOrUpdate(); }}>
-                    <label>Nombre:</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                    <label>Descripción:</label>
-                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-                    <label>Precio:</label>
-                    <input type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} />
-                    <label>Imagen:</label>
-                    <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
-                    <label>Status:</label>
-                    <select
-                        value={status || ''}
-                        onChange={(e) => setStatus(e.target.value as 'disponible' | 'ocupado')}
-                    >
-                        <option value="">Seleccione...</option>
-                        <option value="disponible">Disponible</option>
-                        <option value="ocupado">Ocupado</option>
-                    </select>
-                    <div>
-                        <button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</button>
-                        <button type="button" onClick={handleCancelEdit}>Cancelar</button>
-                    </div>
-                </form>
-                <Carousel>
-                    {bikes.map((bike) => (
-                        <Carousel.Item key={bike._id}>
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <img
-                                        className="d-block w-50"
-                                        src={bike.image}
-                                        alt={bike.name}
-                                    />
-                                </div>
-                                <div className="text-white p-4">
-                                    <h3>{bike.name}</h3>
-                                    <p>{bike.description}</p>
-                                    <div>
-                                        <button onClick={() => handleEdit(bike._id)}>Editar</button>
-                                        <button onClick={() => handleDelete(bike._id)}>Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </Carousel.Item>
-                    ))}
-                </Carousel>
-                {!!errorResponse && <p style={{ color: 'red' }}>{errorResponse}</p>}
-            </div>
+            <Row className="fondo-negro">
+                <Col md={3}>
+                    <h1>Bikes</h1>
+                    <Form onSubmit={(e) => { e.preventDefault(); handleCreateOrUpdate(); }}>
+                        <Form.Group controlId="formName">
+                            <Form.Label>Nombre:</Form.Label>
+                            <Form.Control type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Label>Descripción:</Form.Label>
+                            <Form.Control type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group controlId="formPrice">
+                            <Form.Label>Precio:</Form.Label>
+                            <Form.Control type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} />
+                        </Form.Group>
+                        <Form.Group controlId="formImage">
+                            <Form.Label>Imagen:</Form.Label>
+                            <Form.Control type="url" value={image} onChange={(e) => setImage(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group controlId="formStatus">
+                            <Form.Label>Status:</Form.Label>
+                            <Form.Control as="select" value={status || ''} onChange={(e) => setStatus(e.target.value as 'disponible' | 'ocupado')}>
+                                <option value="">Seleccione...</option>
+                                <option value="disponible">Disponible</option>
+                                <option value="ocupado">Ocupado</option>
+                            </Form.Control>
+                        </Form.Group>
+                        <div>
+                            <Button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</Button>
+                            <Button variant="secondary" type="button" onClick={handleCancelEdit}>Cancelar</Button>
+                        </div>
+                    </Form>
+                </Col>
+                <Col md={8} style={{ maxHeight: '500px', overflowY: 'auto' }}>
+                    <ListGroup>
+                        {bikes.map((bike) => (
+                            <ListGroup.Item key={bike._id} className="list-group-item">
+                                <Row className="d-flex justify-content-between">
+                                    <Col>
+                                        <img
+                                            className="d-block w-50"
+                                            src={bike.image}
+                                            alt={bike.name}
+                                        />
+                                    </Col>
+                                    <Col className="text-black p-4">
+                                        <h3>{bike.name}</h3>
+                                        <p>{bike.description}</p>
+                                        <div>
+                                            <Button onClick={() => handleEdit(bike._id)}>Editar</Button>
+                                            <Button variant="danger" onClick={() => handleDelete(bike._id)}>Eliminar</Button>
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                    {!!errorResponse && <p style={{ color: 'red' }}>{errorResponse}</p>}
+                </Col>
+            </Row>
             <footer id='footerhome'>BikeRental@2023</footer>
         </AdminLayout>
     );

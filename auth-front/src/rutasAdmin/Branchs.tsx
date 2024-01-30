@@ -112,21 +112,23 @@ export default function Branches() {
         try {
             const response = await fetch(`${API_URL}/branch/${branchId}`, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${auth.getAccessToken()}`,
+                },
             });
 
             if (response.ok) {
                 fetchBranches();
                 clearFormFields();
             } else {
-                setErrorResponse("Error al eliminar la dirección");
+                setErrorResponse("Error al eliminar la sucursal");
             }
         } catch (error) {
             console.error(error);
-            setErrorResponse(
-                "Error interno al eliminar la dirección"
-            );
+            setErrorResponse("Error interno al eliminar la sucursal");
         }
     };
+
 
     const handleEdit = (branch: Branch) => {
         setName(branch.name);
