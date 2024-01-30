@@ -84,11 +84,8 @@ router.get('/:id', async (req, res) => {
 // Eliminar una dirección
 router.delete('/:id', authenticate, async (req, res) => {
     try {
-        // Eliminar la dirección y las bicicletas asociadas
+        // Eliminar solo la dirección
         const deletedBranch = await Branch.findByIdAndDelete(req.params.id);
-        if (deletedBranch.bicycles.length > 0) {
-            await Bicycle.deleteMany({ _id: { $in: deletedBranch.bicycles } });
-        }
 
         res.status(200).json(jsonResponse(200, deletedBranch));
     } catch (error) {
@@ -96,5 +93,6 @@ router.delete('/:id', authenticate, async (req, res) => {
         res.status(500).json({ error: "Error interno al eliminar dirección" });
     }
 });
+
 
 module.exports = router;

@@ -4,7 +4,7 @@ import { API_URL } from '../auth/constants';
 import { useState, useEffect } from 'react';
 import { Outlet } from "react-router-dom";
 import { AuthResponseError, Bicycle } from '../types/types';
-import { Carousel, Col, Row, Form, Button, ListGroup } from 'react-bootstrap'
+import { Carousel, Col, Row, Form, Button, ListGroup } from 'react-bootstrap';
 
 export default function Bikes() {
     const [bikes, setBikes] = useState<Bicycle[]>([]);
@@ -15,6 +15,7 @@ export default function Bikes() {
     const [status, setStatus] = useState<'disponible' | 'ocupado' | undefined>(undefined);
     const [errorResponse, setErrorResponse] = useState("");
     const [editBikeId, setEditBikeId] = useState<string | undefined>(undefined);
+    const [searchTerm, setSearchTerm] = useState("");
     const auth = useAuth();
 
     useEffect(() => {
@@ -120,6 +121,11 @@ export default function Bikes() {
         clearFormFields();
     };
 
+    const filteredBikes = bikes.filter((bike) =>
+        bike.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        bike.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <AdminLayout>
             <Row className="fondo-negro">
@@ -140,7 +146,7 @@ export default function Bikes() {
                         </Form.Group>
                         <Form.Group controlId="formImage">
                             <Form.Label>Imagen:</Form.Label>
-                            <Form.Control type="url" value={image} onChange={(e) => setImage(e.target.value)} />
+                            <Form.Control type="text" value={image} onChange={(e) => setImage(e.target.value)} />
                         </Form.Group>
                         <Form.Group controlId="formStatus">
                             <Form.Label>Status:</Form.Label>
@@ -154,11 +160,19 @@ export default function Bikes() {
                             <Button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</Button>
                             <Button variant="secondary" type="button" onClick={handleCancelEdit}>Cancelar</Button>
                         </div>
+                        <Form.Group controlId="formSearch">
+                            <Form.Label>Buscar Bicicleta:</Form.Label>
+                            <Form.Control type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                        </Form.Group>
+                        <div>
+                            <Button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</Button>
+                            <Button variant="secondary" type="button" onClick={handleCancelEdit}>Cancelar</Button>
+                        </div>
                     </Form>
                 </Col>
                 <Col md={8} style={{ maxHeight: '500px', overflowY: 'auto' }}>
                     <ListGroup>
-                        {bikes.map((bike) => (
+                        {filteredBikes.map((bike) => (
                             <ListGroup.Item key={bike._id} className="list-group-item">
                                 <Row className="d-flex justify-content-between">
                                     <Col>
