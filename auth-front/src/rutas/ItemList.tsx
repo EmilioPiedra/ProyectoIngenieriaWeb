@@ -105,11 +105,11 @@ export default function ItemList() {
                     {/* Botones de navegación manual */}
                     <div className="d-flex justify-content-center mt-3">
                         <button className="btn btn-danger" onClick={prevSlide} style={{ color: 'white' }}>
-                            Previous
+                        Anterior 
                         </button>
                         <div style={{ width: '500px' }}></div> {/* Aumenté el espacio entre botones */}
                         <button className="btn btn-danger" onClick={nextSlide} style={{ color: 'white' }}>
-                            Next
+                        Siguiente
                         </button>
                     </div>
             </div>

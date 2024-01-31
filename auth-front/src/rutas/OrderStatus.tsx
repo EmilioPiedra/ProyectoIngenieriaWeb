@@ -26,7 +26,7 @@ export default function OrderStatus() {
     </div>
    
                 </div>
-                <h1 id='titulo' className="text-3xl font-bold">Order Status</h1>
+                <h1 id='titulo' className="text-3xl font-bold">Estado de orden</h1>
                 <div className="order-status-container">
                     {/* Mostrar los detalles del pedido obtenidos con getOrderDetails */}
                     <div className="order-details">
