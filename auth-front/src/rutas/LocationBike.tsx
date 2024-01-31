@@ -50,20 +50,20 @@ export default function LocationBike() {
 
   return (
     <PortalLayout>
-      <div className="fondo-negro">
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-6">
-              <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick1}>
-                Regresar
-              </button>
-            </div>
-            <div className="col-6 d-flex justify-content-end">
-              <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2} disabled={!recogidaFecha || !recogidaHora || !devolucionUbicacion || !devolucionFecha || !devolucionHora}>
-                Continuar
-              </button>
-            </div>
-          </div>
+  
+      <div className="container">
+      <div className="row">
+        <div className="col-6 d-flex justify-content-start">
+          <button type="button" id="regresarButton" className="btn btn-danger" onClick={handleClick1}>
+            Regresar
+          </button>
+        </div>
+        <div className="col-6 d-flex justify-content-end">
+          <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2} disabled={!recogidaFecha || !recogidaHora || !devolucionUbicacion || !devolucionFecha || !devolucionHora}>
+            Continuar
+          </button>
+        </div>
+      </div>
         </div>
         <p></p>
         <p></p>
@@ -121,8 +121,8 @@ export default function LocationBike() {
               </div>
             </form>
           </div>
-        </div>
       </div>
+      <div id="map" className="map-container"></div>
       <footer className='orderfototer'>BikeRental@2023</footer>
     </PortalLayout>
   );

@@ -50,21 +50,21 @@ export default function ItemList() {
 
     return (
         <PortalLayout>
-            <div className="fondo-negro">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-6">
-                            <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick1}>
-                                Regresar
-                            </button>
-                        </div>
-                        <div className="col-6 d-flex justify-content-end">
-                            <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2}>
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              <div className="container">
+  <div className="row"> {/* Asegúrate de que los botones estén dentro de un div con clase 'row' */}
+    <div className="col-6 d-flex justify-content-start">
+      <button type="button" id="regresarButton" className="btn btn-danger" onClick={handleClick1}>
+        Regresar
+      </button>
+    </div>
+    <div className="col-6 d-flex justify-content-end">
+      <button type="button" id="continuarButton" className="btn btn-danger" onClick={handleClick2}>
+        Continuar
+      </button>
+    </div>
+  </div>
+</div>
+
                 <h1 className="text-2xl font-bold mb-4 text-center mx-auto">Seleccionar Bicicleta</h1>
                 <div className="main-container">
                     <Carousel
@@ -112,9 +112,8 @@ export default function ItemList() {
                             Next
                         </button>
                     </div>
-                </div>
             </div>
-            <footer className='orderfototer'>BikeRental@2023</footer>
-        </PortalLayout>
+            <div id="map" className="map-container"></div>
+      <footer className='orderfototer'>BikeRental@2023</footer>        </PortalLayout>
     );
 }

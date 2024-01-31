@@ -32,18 +32,18 @@ export default function PayMetod() {
     const selectedBicycle = auth.getSelectedBicycle();
     return (
         <PortalLayout>
-            <div className="fondo-negro">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-6">
-                            <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick1}>
-                                Regresar
-                            </button>
-                        </div>
-                        <div className="col-6 d-flex justify-content-end">
-                        </div>
-                    </div>
-                </div>
+          
+          <div className="container">
+  <div className="row"> {/* Asegúrate de que los botones estén dentro de un div con clase 'row' */}
+    <div className="col-6 d-flex justify-content-start">
+      <button type="button" id="regresarButton" className="btn btn-danger" onClick={handleClick1}>
+        Regresar
+      </button>
+    </div>
+    </div>
+    </div>
+
+    
                 <p></p>
                 <div className="container">
                     <div className="row">
@@ -101,45 +101,46 @@ export default function PayMetod() {
                         </div>
                         <div className="col-6 d-flex justify-content-end">
                             <form onSubmit={handleSubmit}>
-                                <label>
-                                    Titular de la Tarjeta:
-                                    <input
-                                        type="text"
-                                        value={cardHolder}
-                                        onChange={(e) => setCardHolder(e.target.value)}
-                                    />
-                                </label>
-                                <label>
-                                    Número de Tarjeta:
-                                    <input
-                                        type="text"
-                                        value={cardNumber}
-                                        onChange={(e) => setCardNumber(e.target.value)}
-                                    />
-                                </label>
-                                <label>
-                                    Fecha de Expiración:
-                                    <input
-                                        type="text"
-                                        value={expirationDate}
-                                        onChange={(e) => setExpirationDate(e.target.value)}
-                                    />
-                                </label>
-                                <label>
-                                    CVV:
-                                    <input
-                                        type="text"
-                                        value={cvv}
-                                        onChange={(e) => setCVV(e.target.value)}
-                                    />
-                                </label>
+                            <label style={{ color: '#fff' }}>
+  Titular de la Tarjeta:
+  <input
+    type="text"
+    value={cardHolder}
+    onChange={(e) => setCardHolder(e.target.value)}
+  />
+</label>
+
+<label style={{ color: '#fff' }}>
+  Número de Tarjeta:
+  <input
+    type="text"
+    value={cardNumber}
+    onChange={(e) => setCardNumber(e.target.value)}
+  />
+</label>
+<label style={{ color: '#fff' }}>
+  Fecha de Expiración:
+  <input
+    type="text"
+    value={expirationDate}
+    onChange={(e) => setExpirationDate(e.target.value)}
+  />
+</label>
+<label style={{ color: '#fff' }}>
+  CVV:
+  <input
+    type="text"
+    value={cvv}
+    onChange={(e) => setCVV(e.target.value)}
+  />
+</label>
+
                                 <button type="button" onClick={handleSubmit} style={{ backgroundColor: '#BE0F30', color: '#fff' }}>
                                     Pagar
                                 </button>
                             </form>
                         </div>
                     </div>
-                </div>
             </div>
             <footer className='orderfototer'>BikeRental@2023</footer>
         </PortalLayout>
