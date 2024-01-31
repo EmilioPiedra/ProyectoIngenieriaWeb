@@ -69,9 +69,7 @@ export default function Signup() {
     }
     return <>
         <DefaultLayout>
-            <div className="fondo-negro">
-                <p></p>
-                <h1 className="login">Registrarse</h1>
+        <h1 className="login">Registrarse</h1>
                 <div className="Signup-container">
                     {!!errorResponse && <div className='errorMessage' style={{ color: 'black' }}>{errorResponse}</div>}
                     <form className="login-form" onSubmit={handleSubnit}>
@@ -87,10 +85,9 @@ export default function Signup() {
                         <button type="submit">Registrar</button>
                     </form>
                 </div>
-            </div>
 
             <footer id="footer">
-                <div className="nombrefooter">BikeRental@2023</div>
+                <div className="footer-singup">BikeRental@2023</div>
 
             </footer>
         </DefaultLayout>

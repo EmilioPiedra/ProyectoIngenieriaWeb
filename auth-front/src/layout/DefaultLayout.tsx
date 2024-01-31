@@ -28,9 +28,6 @@ export default function DefaultLayout({ children }: DefaultLayoutProps) {
                                 <h2 className='login'>Iniciar Sesión</h2>
                             </Link>
 
-                            <Link to="/signup" className="nav-link" style={{ color: 'white' }}>
-                                <h2 className='signup'>Registrarse</h2>
-                            </Link>
                         </div>
                     </div >
                 </nav >

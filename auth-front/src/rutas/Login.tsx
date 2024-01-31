@@ -5,6 +5,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from '../auth/constants';
 import { AuthResponse, AuthResponseError } from '../types/types';
 import { Icon } from '@iconify/react';
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const [userName, setUserName] = useState("");
@@ -65,12 +66,10 @@ export default function Login() {
 
     return (
         <DefaultLayout>
-            <div className="fondo-negro">
-                <p></p>
-                <h1 className="login">Iniciar Sesión</h1>
+            <h1 className="login">Iniciar Sesión</h1>
                 <div className="login-container" style={{ color: 'black' }}>
                     <div className="icono">
-                        <Icon icon="bx:user" style={{ color: 'black', fontSize: '70px' }} />
+                        <Icon icon="bx:user" style={{ color: 'white', fontSize: '70px' }} />
                     </div>
                     {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
                     <form className="login-form" onSubmit={handleSubnit}>
@@ -78,8 +77,10 @@ export default function Login() {
                         <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" Contraseña" />
                         <button type="submit">Iniciar Sesión</button>
                     </form>
+                    
+                    <p className="registrarse-sesion">No tienes cuenta ? <Link to="/signup" className="nav-link" style={{ color: 'white' }}><span className="color-registrarse">Registrate</span></Link></p>
+                    
                 </div>
-            </div>
             <footer id="footer">
                 <div className="nombrefooter">BikeRental@2023</div>
             </footer>

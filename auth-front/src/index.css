@@ -10,7 +10,7 @@ body {
 .titulo {
   text-align: left;
   font-size: 30px;
-  margin-bottom: 20px;
+  margin: 25px;
   font-weight: bold;
 
 }
@@ -105,6 +105,9 @@ body {
 
 
 /* login */
+.login{
+  padding: 25px;
+}
 .icono {
   display: flex;
   justify-content: center;
@@ -117,8 +120,8 @@ body {
   height: 350px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
-  background: #FFF;
+  /* border: 1px solid #ccc; */
+  /* background: #FFF; */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -168,7 +171,7 @@ button {
 /* Signup */
 
 .Signup-container {
-  background: #FFF;
+  /* background: #FFF; */
   width: 450px;
   height: auto;
   margin: auto;
@@ -212,6 +215,8 @@ button {
   justify-content: flex-start;
   flex-direction: column;
   padding: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 
@@ -249,9 +254,7 @@ button {
   justify-content: center;
   display: flex;
   align-items: center;
-  /* Alinea verticalmente en el centro */
-  padding: 10px;
-  /* Añade algún espacio alrededor del contenido */
+  /* padding: 20px; */
 }
 
 #footerhome {
@@ -275,7 +278,9 @@ button {
   padding: 10px;
   /* Añade algún espacio alrededor del contenido */
 }
-
+.footer-singup{
+  padding: 25px;
+}
 .logonodo {
   justify-content: flex-start;
   height: 50px;
@@ -714,20 +719,22 @@ form button {
   border: 1px solid #C5A76A; /* Aplica el color de borde a la tabla y a las celdas */
 }
 
-/* estilo del admin de bikes */
-.bloque-sansebastian{
+/* estilo cuadros de los parques de home */
+.card-img-top{
   display: flex;
   height: 250px;
-  width: 250px;
-  justify-content: flex-start;
+  width: auto;
 }
-.bloque-bolivar{
-  display: flex;
-  height: 250px;
-  width: 250px;
+.card{
+  background:black ;
+  color: white;
+  margin-bottom: 50px;
 }
-.bloque-jipiro{
-  display: flex;
-  height: 250px;
-  width: 250px;
+.registrarse-sesion{
+  text-align: center;
+  color: white;
+  padding: 25px;
+}
+.color-registrarse{
+  color: red;
 }

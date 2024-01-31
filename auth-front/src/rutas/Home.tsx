@@ -11,8 +11,8 @@ import imagenparquejipiro from '../imagenes/imagenparquejipiro.jpg';
 export default function Home() {
   return <>
     <DefaultLayout>
+    <h1 className="titulo">ALQUILER DE BICICLETAS</h1>
       <div className="fondo-negro">
-        <h1 className="titulo">ALQUILER DE BICICLETAS</h1>
         <img className="portada" src={imagen} alt="Portada" />
      
         <div className="row">
@@ -113,29 +113,37 @@ export default function Home() {
         <div>
           <h2>Lugares de los anclajes Loja</h2>
         </div>
-        <div>
-          <div className='bloque-sansebastian'>
-            <img src={imagenparquesansebastian} alt="imagen parque San Sebastian" />
-            <p>
-              <h2>Parque San sebastian</h2>
-              <p>Sin duda, es uno de los elementos más atractivos de Loja. En el centro de esta plaza se levanta una torre de 32 metros de altura, en cuya cumbre se encuentra un reloj de cuatro esferas y en su base encontramos cuatro relieves que indican los hechos más sobresalientes en la historia de Loja.</p>
-            </p>
-          </div>
-          <div className='bloque-bolivar'>
-            <img src={imagenparquebolivar} alt="imagen parque Bolivar" />
-            <p>
-              <h2>Parque Bolivar</h2>
-              <p>Un pequeño espacio que se abre para marcar la entrada hacia el centro desde la Avenida Universitaria, el parque Simón Bolívar es perfecto para pasear y dispersarse sin tener que alejarse mucho del centro. Es una pequeña plaza rodeada por la Iglesia y Convento de los Franciscanos.</p>
-            </p>
-          </div>
-          <div className='bloque-jipiro'>
-            <img src={imagenparquejipiro} alt="imagen parque Jipiro" />
-            <p>
-              <h2>Parque Jipiro</h2>
-              <p>Está compuesto por más de 10 hectáreas, al realizar un recorrido por el lugar podrás encontrar varios atractivos y mucho por hacer. Una de sus principales características es su entorno natural, un lugar apto para descansar. Rodeado por los ríos Zamora y Jipiro.</p>
-            </p>
+        <div className='container'>
+      <div className='row'>
+        <div className='col-lg-4'>
+          <div className='card'>
+            <img src={imagenparquesansebastian} className='card-img-top' alt="imagen parque San Sebastian" />
+            <div className='card-body'>
+              <h2 className='card-title'>Parque San Sebastian</h2>
+              <p className='card-text'>Sin duda, es uno de los elementos más atractivos de Loja. En el centro de esta plaza se levanta una torre de 32 metros de altura, en cuya cumbre se encuentra un reloj de cuatro esferas y en su base encontramos cuatro relieves que indican los hechos más sobresalientes en la historia de Loja.</p>
+            </div>
           </div>
         </div>
+        <div className='col-lg-4'>
+          <div className='card'>
+            <img src={imagenparquebolivar} className='card-img-top' alt="imagen parque Bolivar" />
+            <div className='card-body'>
+              <h2 className='card-title'>Parque Bolivar</h2>
+              <p className='card-text'>Un pequeño espacio que se abre para marcar la entrada hacia el centro desde la Avenida Universitaria, el parque Simón Bolívar es perfecto para pasear y dispersarse sin tener que alejarse mucho del centro. Es una pequeña plaza rodeada por la Iglesia y Convento de los Franciscanos.</p>
+            </div>
+          </div>
+        </div>
+        <div className='col-lg-4'>
+          <div className='card'>
+            <img src={imagenparquejipiro} className='card-img-top' alt="imagen parque Jipiro" />
+            <div className='card-body'>
+              <h2 className='card-title'>Parque Jipiro</h2>
+              <p className='card-text'>Está compuesto por más de 10 hectáreas, al realizar un recorrido por el lugar podrás encontrar varios atractivos y mucho por hacer. Una de sus principales características es su entorno natural, un lugar apto para descansar. Rodeado por los ríos Zamora y Jipiro.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       </div>
       <div className="mi-div">
       <img src={imagen1} alt="Imagen 1" />
