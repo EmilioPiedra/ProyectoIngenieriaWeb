@@ -51,7 +51,7 @@ export default function LocationBike() {
   return (
     <PortalLayout>
   
-      <div className="container">
+    <div className="container">
       <div className="row">
         <div className="col-6 d-flex justify-content-start">
           <button type="button" id="regresarButton" className="btn btn-danger" onClick={handleClick1}>
@@ -121,9 +121,10 @@ export default function LocationBike() {
               </div>
             </form>
           </div>
-      </div>
-      <div id="map" className="map-container"></div>
-      <footer className='orderfototer'>BikeRental@2023</footer>
+     </div>
+     <footer id="footer">
+                <div className="nombrefooter">BikeRental@2023</div>
+      </footer>
     </PortalLayout>
   );
 }

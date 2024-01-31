@@ -61,25 +61,27 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      <div className="address-list-container mt-4">
-  <h2 className="text-center mb-3"><b>Lugares disponibles Loja</b></h2>
-  <ul className="list-group">
-    {branches.map((address, index) => (
-      <li 
-        className={`list-group-item list-group-item-action d-flex justify-content-between align-items-center ${auth.currentBranch?._id == address._id ? 'selected-address' : ''}`} 
-        key={index} 
-        onClick={() => handleAddressClick(address)}
-        style={{ cursor: 'pointer' }}>
-        {address.name}
-        {auth.currentBranch?._id == address._id && <span className="badge" style={{ backgroundColor: '#C5A76A', color: '#fff' }}>Seleccionado</span>}
-      </li>
-    ))}
-  </ul>
-</div>
+     <div className="address-list-container mt-4">
+        <h2 className="text-center mb-3"><b>Anclajes disponibles - Loja</b></h2>
+          <ul className="list-group">
+              {branches.map((address, index) => (
+            <li 
+              className={`list-group-item list-group-item-action d-flex justify-content-between align-items-center ${auth.currentBranch?._id == address._id ? 'selected-address' : ''}`} 
+              key={index} 
+              onClick={() => handleAddressClick(address)}
+              style={{ cursor: 'pointer' }}>
+              {address.name}
+              {auth.currentBranch?._id == address._id && <span className="badge" style={{ backgroundColor: '#C5A76A', color: '#fff' }}>Seleccionado</span>}
+            </li>
+            ))}
+        </ul>
+      </div>
 
 
       <div id="map" className="map-container"></div>
-      <footer className='orderfototer'>BikeRental@2023</footer>
+      <footer id="footer">
+                <div className="nombrefooter-item">BikeRental@2023</div>
+       </footer> 
     </PortalLayout>
   );
 }

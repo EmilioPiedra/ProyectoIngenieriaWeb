@@ -42,8 +42,6 @@ export default function PayMetod() {
     </div>
     </div>
     </div>
-
-    
                 <p></p>
                 <div className="container">
                     <div className="row">
@@ -142,7 +140,9 @@ export default function PayMetod() {
                         </div>
                     </div>
             </div>
-            <footer className='orderfototer'>BikeRental@2023</footer>
+            <footer id="footer">
+                <div className="nombrefooter-item">BikeRental@2023</div>
+             </footer> 
         </PortalLayout>
     );
 }

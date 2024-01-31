@@ -78,7 +78,7 @@ export default function Login() {
                         <button type="submit">Iniciar Sesión</button>
                     </form>
                     
-                    <p className="registrarse-sesion">No tienes cuenta ? <Link to="/signup" className="nav-link" style={{ color: 'white' }}><span className="color-registrarse">Registrate</span></Link></p>
+                    <p className="registrarse-sesion">¿No tienes cuenta ? <Link to="/signup" className="nav-link" style={{ color: 'white' }}><span className="color-registrarse">Registrate</span></Link></p>
                     
                 </div>
             <footer id="footer">

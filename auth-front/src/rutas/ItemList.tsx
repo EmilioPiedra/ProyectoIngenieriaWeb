@@ -113,7 +113,10 @@ export default function ItemList() {
                         </button>
                     </div>
             </div>
-            <div id="map" className="map-container"></div>
-      <footer className='orderfototer'>BikeRental@2023</footer>        </PortalLayout>
+            
+            <footer id="footer">
+                <div className="nombrefooter-item">BikeRental@2023</div>
+             </footer>     
+       </PortalLayout>
     );
 }

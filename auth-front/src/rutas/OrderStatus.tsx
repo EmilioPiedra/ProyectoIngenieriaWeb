@@ -78,7 +78,9 @@ export default function OrderStatus() {
                     )}
                 </div>
           
-            <footer className='orderfototer'>BikeRental@2023</footer>
+            <footer id="footer">
+                <div className="nombrefooter-item">BikeRental@2023</div>
+             </footer>  
         </PortalLayout>
     );
 }
