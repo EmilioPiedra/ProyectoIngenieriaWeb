@@ -738,3 +738,7 @@ form button {
 .color-registrarse{
   color: red;
 }
+.selected-address {
+  background-color: #C5A76A !important; /* Fondo del color especificado */
+  color: #fff !important; /* Texto en color blanco para mejorar la legibilidad */
+}
