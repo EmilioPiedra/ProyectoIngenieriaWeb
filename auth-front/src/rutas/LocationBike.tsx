@@ -74,24 +74,25 @@ export default function LocationBike() {
             <form className="centered-form">
               <div className="column">
                 <div>
-                  <label>Ubicación de Recogida:</label>
-                  <input type="text" readOnly value={auth.currentBranch?.name} />
-                </div>
-                <div>
-                  <label>Fecha de Recogida:</label>
-                  <input
-                    type="date"
-                    value={recogidaFecha}
-                    onChange={(e) => setRecogidaFecha(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label>Hora de Recogida:</label>
-                  <input
-                    type="time"
-                    value={recogidaHora}
-                    onChange={(e) => setRecogidaHora(e.target.value)}
-                  />
+                      <label>Ubicación de Recogida:</label>
+                      <input type="text" readOnly value={auth.currentBranch?.name} />
+                    </div>
+                    <div>
+                      <label>Fecha de Recogida:</label>
+                      <input
+                        type="date"
+                        value={recogidaFecha}
+                        onChange={(e) => setRecogidaFecha(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <label>Hora de Recogida:</label>
+                      <input
+                        type="time"
+                        value={recogidaHora}
+                        onChange={(e) => setRecogidaHora(e.target.value)}
+                      />
+                
                 </div>
               </div>
               <div className="column">
@@ -123,8 +124,8 @@ export default function LocationBike() {
           </div>
      </div>
      <footer id="footer">
-                <div className="nombrefooter">BikeRental@2023</div>
-      </footer>
+                <div className="nombrefooter-item">BikeRental@2023</div>
+             </footer>  
     </PortalLayout>
   );
 }

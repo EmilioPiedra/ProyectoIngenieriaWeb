@@ -347,11 +347,12 @@ label {
 
 .centered-form label,
 h1 {
-  color: black;
+  color: white;
 }
 
 .main-container {
   background: #000000;
+  color: white;
   width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -368,6 +369,7 @@ h1 {
 .centered-form-container {
   display: flex;
   justify-content: center;
+  
 }
 
 .centered-form {
@@ -376,6 +378,7 @@ h1 {
 }
 
 .column {
+  color: white;
   display: flex;
   flex-direction: column;
   margin: 10px;
