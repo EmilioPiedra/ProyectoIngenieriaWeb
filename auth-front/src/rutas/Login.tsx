@@ -37,7 +37,7 @@ export default function Login() {
 
                 if (json.body.accessToken && json.body.refreshToken) {
                     auth.saveUser(json);
-                    goTo(json.body.user.role === "admin" ? "/adminDashboard" : "/dashboard");
+                    goTo(json.body.user.role === "admin" ? "/adminBikes" : "/dashboard");
                 }
 
             } else {
@@ -57,7 +57,7 @@ export default function Login() {
         console.log("Rol del usuario:", userRole);
 
         if (userRole === 'admin') {
-            return <Navigate to="/adminDashboard" />;
+            return <Navigate to="/adminBikes" />;
         }
         if (userRole !== "admin") {
             return <Navigate to="/dashboard" />;
@@ -67,20 +67,20 @@ export default function Login() {
     return (
         <DefaultLayout>
             <h1 className="login">Iniciar Sesión</h1>
-                <div className="login-container" style={{ color: 'black' }}>
-                    <div className="icono">
-                        <Icon icon="bx:user" style={{ color: 'white', fontSize: '70px' }} />
-                    </div>
-                    {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
-                    <form className="login-form" onSubmit={handleSubnit}>
-                        <input type="text" id="username" name="username" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Usuario" />
-                        <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" Contraseña" />
-                        <button type="submit">Iniciar Sesión</button>
-                    </form>
-                    
-                    <p className="registrarse-sesion">¿No tienes cuenta ? <Link to="/signup" className="nav-link" style={{ color: 'white' }}><span className="color-registrarse">Registrate</span></Link></p>
-                    
+            <div className="login-container" style={{ color: 'black' }}>
+                <div className="icono">
+                    <Icon icon="bx:user" style={{ color: 'white', fontSize: '70px' }} />
                 </div>
+                {!!errorResponse && <div className='errorMessage'>{errorResponse}</div>}
+                <form className="login-form" onSubmit={handleSubnit}>
+                    <input type="text" id="username" name="username" value={userName} onChange={(e) => setUserName(e.target.value)} placeholder="Usuario" />
+                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" Contraseña" />
+                    <button type="submit">Iniciar Sesión</button>
+                </form>
+
+                <p className="registrarse-sesion">¿No tienes cuenta ? <Link to="/signup" className="nav-link" style={{ color: 'white' }}><span className="color-registrarse">Registrate</span></Link></p>
+
+            </div>
             <footer id="footer">
                 <div className="nombrefooter">BikeRental@2023</div>
             </footer>

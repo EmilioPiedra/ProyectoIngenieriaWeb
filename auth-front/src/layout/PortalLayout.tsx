@@ -67,12 +67,12 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                                 )}
                             </div>
                             <Link to={"/UserInfo"}> <Icon icon="bx:user" className="icono-usuario" style={{ color: 'white', fontSize: '40px' }} /></Link>
-                            {auth.getUser()?.name}
-                            <li>
-                                <a href="#" onClick={handleSignout} className="exit-button">
-                                    Salir
+                            <div className="d-flex align-items-center">
+                                <span style={{ color: 'black', marginRight: '10px', fontSize: '20px' }}>{auth.getUser()?.userName}</span>
+                                <a href="#" onClick={handleSignout} style={{ fontSize: '24px', /* Otros estilos según sea necesario */ }}>
+                                    <Icon icon="material-symbols:logout" style={{ fontSize: '50px', color: 'black' }} />
                                 </a>
-                            </li>
+                            </div>
                         </div>
                     </div>
                 </nav>

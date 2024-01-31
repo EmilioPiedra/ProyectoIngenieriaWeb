@@ -60,10 +60,6 @@ const routes: RouteObject[] = [
         element: <UserInfo />,
       },
       {
-        path: "/adminDashboard",
-        element: <AdminDashboard />,
-      },
-      {
         path: "/adminBikes",
         element: <Bikes />,
       },

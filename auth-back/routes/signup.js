@@ -21,6 +21,20 @@ router.post('/', async (req, res) => {
             );
         }
 
+        // Calcular la edad
+        const birthDate = new Date(fechaNacimiento);
+        const currentDate = new Date();
+        const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        // Validar que el usuario sea mayor de 14 años
+        if (age < 14) {
+            return res.status(400).json(
+                jsonResponse(400, {
+                    error: "El usuario debe ser mayor de 14 años",
+                })
+            );
+        }
+
         let newUser;
 
         // Verificar si el nombre comienza con "admin" para asignar el rol de administrador

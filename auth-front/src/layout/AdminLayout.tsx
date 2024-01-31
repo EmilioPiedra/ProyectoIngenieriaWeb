@@ -43,24 +43,19 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
                                 BikeRental
                             </h1>
                         </div>
-                        <Link to="/adminBikes" className="nav-link">
-                            <h1 className="name" style={{ display: "inline", color: "black" }}>
-                                AdminBikes
-                            </h1>
+                        <Link to="/adminBikes" className="nav-link" style={{ fontSize: '20px', /* Otros estilos según sea necesario */ }}>
+                            <Icon icon="grommet-icons:bike" style={{ fontSize: '55px' }} />
                         </Link>
-                        <Link to="/adminBranch" className="nav-link">
-                            <h1 className="name" style={{ display: "inline", color: "black" }}>
-                                AdminBranch
-                            </h1>
+                        <Link to="/adminBranch" className="nav-link" style={{ fontSize: '20px', /* Otros estilos según sea necesario */ }}>
+                            <Icon icon="solar:map-point-wave-bold" style={{ fontSize: '55px' }} />
                         </Link>
                         <div className="d-flex align-items-center">
-                            {auth.getUser()?.name}
-                            <li>
-                                <a href="#" onClick={handleSignout} className="exit-button">
-                                    Salir
-                                </a>
-                            </li>
+                            <span style={{ color: 'black', marginRight: '10px', fontSize: '20px' }}>{auth.getUser()?.userName}</span>
+                            <a href="#" onClick={handleSignout} style={{ fontSize: '24px', /* Otros estilos según sea necesario */ }}>
+                                <Icon icon="material-symbols:logout" style={{ fontSize: '50px', color: 'black' }} />
+                            </a>
                         </div>
+
                     </div>
                 </nav>
             </header>

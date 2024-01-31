@@ -39,7 +39,8 @@ body {
 
 .ventaja {
   font-size: 16px;
-  text-align: justify; /* Corrige esta línea */
+  text-align: justify;
+  /* Corrige esta línea */
   font-weight: 300;
 }
 
@@ -67,7 +68,8 @@ body {
 
 .requisitos {
   font-size: 16px;
-  text-align: justify; /* Corrige esta línea */
+  text-align: justify;
+  /* Corrige esta línea */
   font-weight: 300;
 }
 
@@ -105,9 +107,10 @@ body {
 
 
 /* login */
-.login{
+.login {
   padding: 25px;
 }
+
 .icono {
   display: flex;
   justify-content: center;
@@ -244,9 +247,11 @@ button {
 .carousel-control-next-icon::before {
   color: rgb(177, 83, 83);
 }
-.nombrefooter-item{
+
+.nombrefooter-item {
   padding: 25px;
 }
+
 .nombrefooter {
   text-align: center;
   margin: 0;
@@ -280,9 +285,11 @@ button {
   padding: 10px;
   /* Añade algún espacio alrededor del contenido */
 }
-.footer-singup{
+
+.footer-singup {
   padding: 25px;
 }
+
 .logonodo {
   justify-content: flex-start;
   height: 50px;
@@ -369,7 +376,7 @@ h1 {
 .centered-form-container {
   display: flex;
   justify-content: center;
-  
+
 }
 
 .centered-form {
@@ -488,7 +495,7 @@ label {
 /* fin order estatus */
 /* css de UserInfo */
 .user-info-container {
-  
+
   color: white;
   width: 500px;
   margin: 0 auto;
@@ -567,10 +574,12 @@ h1 {
   overflow-y: auto;
   /* Hacer que la lista tenga desplazamiento vertical si es necesario */
 }
-.address-list-container.mt-4{
+
+.address-list-container.mt-4 {
   background: #000000;
   color: #FFF;
 }
+
 /* Estilos para los elementos de la lista de direcciones */
 .address-list li {
   cursor: pointer;
@@ -615,12 +624,15 @@ h1 {
 .address-list li:last-child {
   border-bottom: none;
 }
-.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center{
+
+.list-group-item.list-group-item-action.d-flex.justify-content-between.align-items-center {
   background: #ccc;
 }
-.list-group-item{
+
+.list-group-item {
   background: #ccc;
 }
+
 /* Estilos para el mapa */
 .map-container {
   /* height: 400px; Ajusta la altura según sea necesario */
@@ -634,7 +646,8 @@ h1 {
 #regresarButton {
   margin-top: 20px;
   background-color: #C5A76A;
-  float: right; /* Añade esta línea */
+  float: right;
+  /* Añade esta línea */
 }
 
 
@@ -712,6 +725,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 /* Target all buttons within the form */
 form button {
   background-color: red;
@@ -724,39 +738,55 @@ form button {
   background-color: red;
   color: white;
 }
+
 .Carousel .text-white div button {
   background-color: red;
   color: white;
 }
 
 
-.tabla, .tabla th, .tabla td {
-  border: 1px solid #C5A76A; /* Aplica el color de borde a la tabla y a las celdas */
+.tabla,
+.tabla th,
+.tabla td {
+  border: 1px solid #C5A76A;
+  /* Aplica el color de borde a la tabla y a las celdas */
 }
 
 /* estilo cuadros de los parques de home */
-.card-img-top{
+.card-img-top {
   display: flex;
   height: 250px;
   width: auto;
 }
-.card{
-  background:black ;
+
+.card {
+  background: black;
   color: white;
   margin-bottom: 50px;
 }
-.registrarse-sesion{
+
+.registrarse-sesion {
   text-align: center;
   color: white;
   padding: 25px;
 }
-.color-registrarse{
+
+.color-registrarse {
   color: red;
 }
+
 .selected-address {
-  background-color: #C5A76A !important; /* Fondo del color especificado */
-  color: #fff !important; /* Texto en color blanco para mejorar la legibilidad */
+  background-color: #C5A76A !important;
+  /* Fondo del color especificado */
+  color: #fff !important;
+  /* Texto en color blanco para mejorar la legibilidad */
 }
-.col-md-8{
+
+.col-md-8 {
   background: black;
+}
+
+.errorMessage {
+  color: red !important;
+
 }
