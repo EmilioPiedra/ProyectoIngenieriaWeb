@@ -15,15 +15,16 @@ export default function OrderStatus() {
 
     return (
         <PortalLayout>
-            <div className="fondo-negro">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-6">
-                            <button type="button" id="regresarButton" className="btn btn-danger btn-block" onClick={handleClick1}>
-                                Regresar
-                            </button>
-                        </div>
-                    </div>
+          
+          <div className="container">
+  <div className="row"> {/* Asegúrate de que los botones estén dentro de un div con clase 'row' */}
+    <div className="col-6 d-flex justify-content-start">
+      <button type="button" id="regresarButton" className="btn btn-danger" onClick={handleClick1}>
+        Regresar
+      </button>
+    </div>
+    </div>
+   
                 </div>
                 <h1 id='titulo' className="text-3xl font-bold">Order Status</h1>
                 <div className="order-status-container">
@@ -76,7 +77,7 @@ export default function OrderStatus() {
                         </div>
                     )}
                 </div>
-            </div>
+          
             <footer className='orderfototer'>BikeRental@2023</footer>
         </PortalLayout>
     );
