@@ -191,9 +191,14 @@ export default function Branches() {
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant="primary" type="button" onClick={handleCreateOrUpdate}>
-                        {editBranchId ? "Actualizar Sucursal" : "Crear Sucursal"}
-                    </Button>
+                    <Button 
+    variant="primary" 
+    type="button" 
+    onClick={handleCreateOrUpdate}
+    style={{ backgroundColor: '#C5A76A', borderColor: '#C5A76A', color: '#fff' }}>
+    {editBranchId ? "Actualizar Sucursal" : "Crear Sucursal"}
+</Button>
+
                     <Button variant="secondary" type="button" onClick={clearFormFields}>
                         Cancelar
                     </Button>
@@ -209,9 +214,13 @@ export default function Branches() {
                                     <strong>Longitud:</strong> {branch.lon}<br />
                                     <strong>Bicicletas:</strong> {branch.bicycles.map(bike => bike.name).join(', ')}
                                 </Card.Text>
-                                <Button variant="primary" onClick={() => handleEdit(branch)}>
-                                    Editar
-                                </Button>
+                                <Button 
+    variant="primary" 
+    onClick={() => handleEdit(branch)}
+    style={{ backgroundColor: '#C5A76A', borderColor: '#C5A76A', color: '#fff' }}>
+    Editar
+</Button>
+
                                 <Button variant="danger" onClick={() => handleDelete(branch._id)}>
                                     Eliminar
                                 </Button>

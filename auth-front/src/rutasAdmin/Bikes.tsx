@@ -157,7 +157,9 @@ export default function Bikes() {
                             </Form.Control>
                         </Form.Group>
                         <div>
-                            <Button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</Button>
+                        <Button type="submit" style={{ backgroundColor: '#C5A76A', color: '#fff' }}>
+  {editBikeId ? "Actualizar" : "Crear"} Bicicleta
+</Button>
                             <Button variant="secondary" type="button" onClick={handleCancelEdit}>Cancelar</Button>
                         </div>
                         <Form.Group controlId="formSearch">
@@ -165,11 +167,15 @@ export default function Bikes() {
                             <Form.Control type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                         </Form.Group>
                         <div>
-                            <Button type="submit">{editBikeId ? "Actualizar" : "Crear"} Bicicleta</Button>
+                        <Button type="submit" style={{ backgroundColor: '#C5A76A', color: '#fff' }}>
+  {editBikeId ? "Actualizar" : "Crear"} Bicicleta
+</Button>
+
                             <Button variant="secondary" type="button" onClick={handleCancelEdit}>Cancelar</Button>
                         </div>
                     </Form>
                 </Col>
+                <p></p>
                 <Col md={8} style={{ maxHeight: '500px', overflowY: 'auto' }}>
                     <ListGroup>
                         {filteredBikes.map((bike) => (
@@ -186,7 +192,9 @@ export default function Bikes() {
                                         <h3>{bike.name}</h3>
                                         <p>{bike.description}</p>
                                         <div>
-                                            <Button onClick={() => handleEdit(bike._id)}>Editar</Button>
+                                        <Button onClick={() => handleEdit(bike._id)} style={{ backgroundColor: '#C5A76A', color: '#fff' }}>
+  Editar
+</Button>
                                             <Button variant="danger" onClick={() => handleDelete(bike._id)}>Eliminar</Button>
                                         </div>
                                     </Col>
